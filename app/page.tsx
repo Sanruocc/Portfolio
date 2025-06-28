@@ -9,6 +9,14 @@ import Footer from "../components/footer"
 import BackgroundEffects from "../components/background-effects"
 import ErrorBoundary from "../components/error-boundary"
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#ec4899",
+}
+
 function LoadingSpinner() {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center">

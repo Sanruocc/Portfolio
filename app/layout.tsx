@@ -24,9 +24,16 @@ export const metadata: Metadata = {
     title: "Rajesh Shrirao - Divine Developer",
     description: "Full-stack developer specializing in MERN stack, Next.js, Flutter, and divine UX/UI design",
   },
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
     generator: 'v0.dev'
+}
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#ec4899",
 }
 
 export default function RootLayout({
@@ -38,7 +45,6 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth dark">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#ec4899" />
       </head>
       <body className={`${inter.className} bg-black overflow-x-hidden antialiased`}>
         <NextUIProvider>
