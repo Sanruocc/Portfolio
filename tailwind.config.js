@@ -1,29 +1,62 @@
 const { nextui } = require("@nextui-org/react")
-const defaultConfig = require("shadcn/ui/tailwind.config")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  ...defaultConfig,
   content: [
-    ...defaultConfig.content,
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+    "./**/*.{js,ts,jsx,tsx,mdx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    ...defaultConfig.theme,
     extend: {
-      ...defaultConfig.theme.extend,
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        ...defaultConfig.theme.extend.colors,
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
         "divine-pink": "#ec4899",
         "divine-purple": "#8b5cf6",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
         divine: ["Inter", "system-ui", "sans-serif"],
@@ -33,9 +66,8 @@ module.exports = {
         glow: "glow 2s ease-in-out infinite",
         "spin-slow": "spin 3s linear infinite",
         "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-      },
-      backdropBlur: {
-        divine: "20px",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
       keyframes: {
         float: {
@@ -46,11 +78,23 @@ module.exports = {
           "0%, 100%": { boxShadow: "0 0 20px rgba(236, 72, 153, 0.3)" },
           "50%": { boxShadow: "0 0 40px rgba(236, 72, 153, 0.6)" },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      backdropBlur: {
+        divine: "20px",
       },
     },
   },
+  darkMode: ["class"],
   plugins: [
-    ...defaultConfig.plugins,
+    require("tailwindcss-animate"),
     nextui({
       themes: {
         dark: {

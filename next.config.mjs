@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -21,6 +18,7 @@ const nextConfig = {
     ],
     unoptimized: true,
   },
+  output: 'standalone',
 }
 
 export default nextConfig
