@@ -1,273 +1,208 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
-import { Card, CardBody, CardFooter, Button, Chip } from "@nextui-org/react"
-import { ExternalLink, Eye, Code } from "lucide-react"
+import { motion } from "framer-motion"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useRef } from "react"
+import AnimatedSection from "./animated-section"
 
 export default function PortfolioGrid() {
-  const containerRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
-
   const projects = [
     {
       id: 1,
       slug: "taskflow-project-management",
-      title: "TaskFlow",
-      subtitle: "Project Management Revolution",
-      description: "MERN stack application with real-time collaboration and divine UX",
-      techStack: ["MongoDB", "Express", "React", "Node.js"],
+      title: "TaskFlow - Project Management",
+      description:
+        "Full-stack MERN application with real-time collaboration, task tracking, and team analytics dashboard",
+      techStack: "MongoDB • Express • React • Node.js",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygwsqvvewm8ts303j23c9z9%2F1750766515_img_0.webp?st=2025-06-24T10%3A13%3A47Z&se=2025-06-30T11%3A13%3A47Z&sks=b&skt=2025-06-24T10%3A13%3A47Z&ske=2025-06-30T11%3A13%3A47Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=DtMTqwmGvNot3tqz4cinw0irtcOIYDGYTwZ7uf%2FypSY%3D&az=oaivgprodscus?",
+      live: "#",
       featured: true,
-      gradient: "from-pink-500 to-purple-600",
     },
     {
       id: 2,
       slug: "ecoshop-sustainable-ecommerce",
-      title: "EcoShop",
-      subtitle: "Sustainable E-commerce",
-      description: "Next.js platform promoting eco-friendly products with divine design",
-      techStack: ["Next.js", "TypeScript", "Stripe"],
+      title: "EcoShop - Sustainable E-commerce",
+      description:
+        "Next.js e-commerce platform promoting eco-friendly products with advanced filtering and payment integration",
+      techStack: "Next.js • TypeScript • Stripe • Prisma",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygww4h4etdaszvgwax6rgt8%2F1750766644_img_0.webp?st=2025-06-24T11%3A07%3A42Z&se=2025-06-30T12%3A07%3A42Z&sks=b&skt=2025-06-24T11%3A07%3A42Z&ske=2025-06-30T12%3A07%3A42Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=Iw5yXVs27pX7sG7NqRnAjAEoOcCFDS%2Bs3SJmPo%2FyOCo%3D&az=oaivgprodscus",
+      live: "#",
       featured: false,
-      gradient: "from-purple-500 to-pink-600",
     },
     {
       id: 3,
       slug: "fittracker-health-fitness-app",
-      title: "FitTracker",
-      subtitle: "Health & Fitness Revolution",
-      description: "Flutter app with divine UX for tracking workouts and nutrition",
-      techStack: ["Flutter", "Dart", "Firebase"],
+      title: "FitTracker - Health & Fitness App",
+      description: "Cross-platform Flutter app for workout tracking, nutrition logging, and progress visualization",
+      techStack: "Flutter • Dart • Firebase • Charts",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygxcrqjerp93sx8etv3czzk%2F1750767186_img_0.webp?st=2025-06-24T11%3A08%3A15Z&se=2025-06-30T12%3A08%3A15Z&sks=b&skt=2025-06-24T11%3A08%3A15Z&ske=2025-06-30T12%3A08%3A15Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=nRc8o2MX3hIBFqKYJb5jX6D3trXo7Gqi7V71pREfw8o%3D&az=oaivgprodscus",
+      live: "#",
       featured: true,
-      gradient: "from-pink-600 to-purple-500",
     },
     {
       id: 4,
       slug: "studybuddy-learning-companion",
-      title: "StudyBuddy",
-      subtitle: "Learning Companion",
-      description: "Android app with divine material design for students",
-      techStack: ["Kotlin", "Android", "Material"],
+      title: "StudyBuddy - Learning Companion",
+      description: "Native Android app for students with flashcards, study timers, and offline note synchronization",
+      techStack: "Kotlin • Room Database • Material Design",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygyf350edfaajc2jy4yavk5%2F1750768423_img_0.webp?st=2025-06-24T11%3A09%3A16Z&se=2025-06-30T12%3A09%3A16Z&sks=b&skt=2025-06-24T11%3A09%3A16Z&ske=2025-06-30T12%3A09%3A16Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=v8R7bY71gJ2H%2FbLZhFEmi4xVeERDUkzkg2JfjN1DTsU%3D&az=oaivgprodscus",
+      live: "#",
       featured: false,
-      gradient: "from-purple-600 to-pink-500",
     },
     {
       id: 5,
       slug: "financeflow-expense-tracker",
-      title: "FinanceFlow",
-      subtitle: "Divine Finance Tracker",
-      description: "Beautiful expense tracking with animated charts and insights",
-      techStack: ["React", "Chart.js", "Node.js"],
+      title: "FinanceFlow - Expense Tracker",
+      description: "Beautiful expense tracking web app with animated charts, budget planning, and spending insights",
+      techStack: "React • Chart.js • Node.js • MongoDB",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygxepn6fv0awcha0vzb3dcx%2F1750767317_img_0.webp?st=2025-06-24T11%3A07%3A42Z&se=2025-06-30T12%3A07%3A42Z&sks=b&skt=2025-06-24T11%3A07%3A42Z&ske=2025-06-30T12%3A07%3A42Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=TClcNbO%2FdJH%2BiaBxO%2B7PoPVTiw6H5lYA01JKLPr3D1o%3D&az=oaivgprodscus",
+      live: "#",
       featured: false,
-      gradient: "from-pink-500 to-purple-600",
     },
     {
       id: 6,
       slug: "devportfolio-designer-showcase",
-      title: "DevPortfolio",
-      subtitle: "Divine Design Showcase",
-      description: "Stunning portfolio with divine animations and modern design",
-      techStack: ["Next.js", "Framer Motion", "Tailwind"],
+      title: "DevPortfolio - Designer Showcase",
+      description: "Stunning portfolio website with smooth animations, dark mode, and responsive design system",
+      techStack: "Next.js • Framer Motion • Tailwind CSS",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygxf00qe8f8qyk9qy5vyevb%2F1750767280_img_0.webp?st=2025-06-24T11%3A07%3A41Z&se=2025-06-30T12%3A07%3A41Z&sks=b&skt=2025-06-24T11%3A07%3A41Z&ske=2025-06-30T12%3A07%3A41Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=pxmu1TSNwbTaxMpqmG6ksKI2BeB0jmza6Ftw3OrJSVk%3D&az=oaivgprodscus",
+      live: "#",
       featured: true,
-      gradient: "from-purple-500 to-pink-600",
     },
   ]
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.21, 0.47, 0.32, 0.98],
+      },
+    },
+  }
+
   return (
-    <section id="projects" className="py-32 px-4 sm:px-6 lg:px-8 relative z-10" ref={containerRef}>
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <motion.div style={{ y, opacity }} className="text-center mb-20">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            viewport={{ once: true }}
-            className="text-6xl md:text-8xl font-black mb-6"
-          >
-            <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-pink-600 bg-clip-text text-transparent">
-              DIVINE
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
-              PROJECTS
-            </span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
-          >
-            Witness the convergence of art and technology through projects crafted with divine inspiration
-          </motion.p>
-        </motion.div>
+        <AnimatedSection className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Featured <span className="text-orange-500">Projects</span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Real-world applications showcasing MERN stack, Next.js, Flutter, Android development, and modern UX/UI
+            design
+          </p>
+        </AnimatedSection>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 100, rotateX: 45 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.1,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
-              viewport={{ once: true, margin: "-100px" }}
-              whileHover={{
-                y: -20,
-                scale: 1.05,
-                rotateY: 5,
-                transition: { duration: 0.3 },
-              }}
-            >
-              <Link href={`/projects/${project.slug}`}>
-                <Card
-                  className="h-full cursor-pointer group border-0 shadow-2xl"
-                  style={{
-                    background: "rgba(0, 0, 0, 0.3)",
-                    backdropFilter: "blur(20px)",
-                    border: "1px solid rgba(236, 72, 153, 0.1)",
-                  }}
-                >
-                  <CardBody className="p-0 relative overflow-hidden">
-                    {/* Featured badge */}
-                    {project.featured && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: index * 0.1 + 0.5, type: "spring" }}
-                        className="absolute top-4 left-4 z-10"
-                      >
-                        <Chip className={`bg-gradient-to-r ${project.gradient} text-white font-bold`} size="sm">
-                          DIVINE
-                        </Chip>
-                      </motion.div>
-                    )}
-
+        <AnimatedSection delay={0.2}>
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {projects.map((project, index) => (
+              <motion.div key={project.id} variants={cardVariants}>
+                <Link href={`/projects/${project.slug}`}>
+                  <Card className="bg-gray-900 border-gray-800 hover:border-orange-500/50 transition-all duration-300 group overflow-hidden h-full cursor-pointer">
                     {/* Project Image */}
                     <div className="relative overflow-hidden">
                       <Image
                         src={project.image || "/placeholder.svg"}
                         alt={project.title}
                         width={400}
-                        height={250}
-                        className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                        height={240}
+                        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                       />
 
-                      {/* Gradient overlay */}
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-t ${project.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                      />
+                      {/* Featured Badge */}
+                      {project.featured && (
+                        <motion.div
+                          className="absolute top-4 left-4"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: index * 0.1 + 0.5 }}
+                        >
+                          <Badge className="bg-orange-500 text-black font-medium">Featured</Badge>
+                        </motion.div>
+                      )}
 
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
-                        <div className="flex gap-4">
-                          <motion.div whileHover={{ scale: 1.2, rotate: 360 }} transition={{ duration: 0.3 }}>
-                            <Button isIconOnly className={`bg-gradient-to-r ${project.gradient} text-white`} size="lg">
-                              <Eye className="w-5 h-5" />
-                            </Button>
-                          </motion.div>
-                          <motion.div whileHover={{ scale: 1.2, rotate: -360 }} transition={{ duration: 0.3 }}>
-                            <Button
-                              isIconOnly
-                              variant="bordered"
-                              className="border-white/50 text-white backdrop-blur-md"
-                              size="lg"
-                            >
-                              <Code className="w-5 h-5" />
-                            </Button>
-                          </motion.div>
-                        </div>
+                      {/* Overlay with Link */}
+                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                          <div className="p-3 bg-orange-500 rounded-full text-black transition-all duration-200">
+                            <ExternalLink className="w-5 h-5" />
+                          </div>
+                        </motion.div>
                       </div>
                     </div>
-                  </CardBody>
 
-                  <CardFooter className="flex-col items-start p-6">
-                    <motion.h3
-                      className={`text-2xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent mb-1`}
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {project.title}
-                    </motion.h3>
-                    <p className="text-sm text-purple-300 mb-3">{project.subtitle}</p>
-                    <p className="text-gray-300 text-sm mb-4 line-clamp-2">{project.description}</p>
-
-                    {/* Tech stack */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech, techIndex) => (
-                        <motion.div
-                          key={tech}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: index * 0.1 + techIndex * 0.05 + 0.8 }}
-                          whileHover={{ scale: 1.1 }}
+                    {/* Card Content */}
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-white text-xl font-semibold group-hover:text-orange-500 transition-colors duration-200">
+                        {project.title}
+                      </CardTitle>
+                      <div className="flex items-center space-x-2">
+                        <Badge
+                          variant="secondary"
+                          className="bg-orange-500/10 text-orange-500 border-orange-500/20 text-xs font-medium"
                         >
-                          <Chip
-                            size="sm"
-                            variant="flat"
-                            className="bg-purple-500/20 text-purple-300 border border-purple-500/30"
-                          >
-                            {tech}
-                          </Chip>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </CardFooter>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+                          {project.techStack}
+                        </Badge>
+                      </div>
+                    </CardHeader>
 
-        {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <motion.div
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 40px rgba(236, 72, 153, 0.5)",
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              as={Link}
-              href="/projects"
-              size="lg"
-              className="px-12 py-4 text-lg font-bold text-white bg-gradient-to-r from-pink-500 to-purple-600"
-              endContent={<ExternalLink className="w-5 h-5" />}
-            >
-              Explore Divine Universe
-            </Button>
+                    <CardContent className="pt-0">
+                      <CardDescription className="text-gray-400 text-sm leading-relaxed">
+                        {project.description}
+                      </CardDescription>
+                    </CardContent>
+
+                    {/* Bottom Border Accent */}
+                    <div className="h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
-        </motion.div>
+        </AnimatedSection>
+
+        {/* View More Button */}
+        <AnimatedSection delay={0.4} className="text-center mt-16">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              href="/projects"
+              className="inline-flex items-center px-8 py-3 bg-transparent border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black font-semibold rounded-full transition-all duration-300"
+            >
+              View All Projects
+              <ExternalLink className="ml-2 w-4 h-4" />
+            </Link>
+          </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   )

@@ -8,14 +8,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  themeColor: "#ec4899",
-}
-
 const projectsData = {
   "taskflow-project-management": {
     title: "TaskFlow - Project Management",
@@ -470,6 +462,87 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </ul>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* Development Process */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <h2 className="text-3xl font-bold mb-12 text-center">Development Process</h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {Object.entries(project.development).map(([phase, description], index) => (
+                  <div key={phase} className="bg-gray-800/30 p-6 rounded-lg">
+                    <h3 className="text-xl font-semibold mb-3 text-orange-500 capitalize">{phase}</h3>
+                    <p className="text-gray-300 leading-relaxed">{description}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Challenges & Solutions */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold mb-12 text-center">Challenges & Solutions</h2>
+
+              <div className="space-y-8">
+                {project.challenges.map((challenge, index) => (
+                  <div key={index} className="bg-gray-800/50 p-8 rounded-lg">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                      <div>
+                        <h3 className="text-xl font-semibold mb-3 text-red-400">Challenge</h3>
+                        <p className="text-gray-300 leading-relaxed">{challenge.problem}</p>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold mb-3 text-green-400">Solution</h3>
+                        <p className="text-gray-300 leading-relaxed">{challenge.solution}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              <h2 className="text-3xl font-bold mb-6">Interested in Similar Work?</h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Let's discuss how I can help bring your project ideas to life with the same attention to detail and
+                technical expertise.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild className="bg-orange-500 hover:bg-orange-600 text-black font-semibold">
+                  <Link href="mailto:rajeshshrirao696@gmail.com">Get In Touch</Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black"
+                >
+                  <Link href="/">View More Projects</Link>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>

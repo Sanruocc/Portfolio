@@ -7,14 +7,6 @@ import { ArrowLeft, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  themeColor: "#ec4899",
-}
-
 export default function ProjectsPage() {
   const projects = [
     {
