@@ -13,53 +13,67 @@ export default function AboutSection() {
 
   const skills = [
     {
-      name: "MERN Stack",
-      icon: Code,
-      color: "bg-orange-500/10 text-orange-500 border-orange-500/20",
-      level: 90,
-      description: "MongoDB, Express.js, React, Node.js",
-    },
-    {
       name: "Next.js",
       icon: Code,
-      color: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-      level: 85,
-      description: "Full-stack React framework",
+      color: "bg-primary/10 text-primary border-primary/20",
+      level: 95,
+      description: "Full-stack React framework for production apps",
     },
     {
       name: "Flutter",
       icon: Smartphone,
-      color: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
-      level: 80,
-      description: "Cross-platform mobile development",
+      color: "bg-primary/10 text-primary border-primary/20",
+      level: 90,
+      description: "Cross-platform mobile development with Dart",
     },
     {
-      name: "Android",
-      icon: Smartphone,
-      color: "bg-green-500/10 text-green-400 border-green-500/20",
-      level: 75,
-      description: "Native Android with Kotlin",
-    },
-    {
-      name: "UX/UI Design",
-      icon: Palette,
-      color: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-      level: 85,
-      description: "User-centered design & prototyping",
-    },
-    {
-      name: "TypeScript",
+      name: "AI Agent Development",
       icon: Code,
-      color: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+      color: "bg-accent/10 text-accent border-accent/20",
+      level: 85,
+      description: "Building intelligent automation systems",
+    },
+    {
+      name: "Supabase",
+      icon: Code,
+      color: "bg-primary/10 text-primary border-primary/20",
+      level: 88,
+      description: "Backend-as-a-Service with real-time capabilities",
+    },
+    {
+      name: "Stripe Integration",
+      icon: Code,
+      color: "bg-accent/10 text-accent border-accent/20",
+      level: 92,
+      description: "Payment processing and subscription management",
+    },
+    {
+      name: "UI/UX Design",
+      icon: Palette,
+      color: "bg-primary/10 text-primary border-primary/20",
+      level: 90,
+      description: "Creating beautiful and intuitive user experiences",
+    },
+    {
+      name: "Prompt Engineering",
+      icon: Code,
+      color: "bg-accent/10 text-accent border-accent/20",
+      level: 85,
+      description: "Optimizing AI interactions and responses",
+    },
+    {
+      name: "Python Automation",
+      icon: Code,
+      color: "bg-primary/10 text-primary border-primary/20",
       level: 80,
-      description: "Type-safe JavaScript development",
+      description: "Scripting and workflow automation solutions",
     },
   ]
 
   const highlights = [
-    { icon: User, label: "Developer", value: "Rajesh Shrirao" },
-    { icon: Calendar, label: "Age", value: "21 Years" },
-    { icon: GraduationCap, label: "Education", value: "BCA" },
+    { icon: Award, label: "Expertise", value: "Full-Stack Development" },
+    { icon: Zap, label: "Specialization", value: "AI & Automation" },
+    { icon: Code, label: "Focus", value: "Revenue-Driven Solutions" },
   ]
 
   const stats = [
@@ -83,62 +97,59 @@ export default function AboutSection() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      },
     },
   }
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+    <section id="about" className="section-padding bg-muted/30">
+      <div className="max-w-6xl mx-auto padding-responsive">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Left Column - Text Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             <AnimatedSection>
               <div className="space-y-4">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20">
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
                   <motion.div
-                    className="w-2 h-2 bg-orange-500 rounded-full mr-2"
+                    className="w-2 h-2 bg-accent rounded-full mr-2"
                     animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
                   />
-                  <span className="text-orange-500 text-sm font-medium">About Me</span>
+                  <span className="text-accent text-sm font-medium">About Me</span>
                 </div>
 
-                <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-                  Hi, I'm <span className="text-orange-500">Rajesh</span>
+                <h2 className="text-responsive-title font-bold text-foreground leading-tight purple-neon-text">
+                  Architect of <span className="text-primary">Digital Innovation</span>
                 </h2>
               </div>
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
-                <motion.p className="transition-all duration-300 hover:text-white" whileHover={{ x: 10 }}>
-                  A passionate developer and BCA graduate specializing in full-stack development with the{" "}
-                  <span className="text-orange-500 font-medium">MERN stack</span> and modern frameworks like
-                  <span className="text-blue-400 font-medium"> Next.js</span>.
+              <div className="space-y-4 sm:space-y-6 text-muted-foreground text-responsive-body leading-relaxed">
+                <motion.p className="transition-all duration-300 hover:text-foreground text-lg" whileHover={{ x: 10 }}>
+                  I transform ambitious business visions into <span className="text-accent font-medium">revenue-generating digital experiences</span>.
+                  Clients don't just get code—they get <span className="text-primary font-medium">strategic technology partnerships</span> that drive measurable growth
+                  and unlock unprecedented potential.
                 </motion.p>
 
-                <motion.p className="transition-all duration-300 hover:text-white" whileHover={{ x: 10 }}>
-                  I create seamless mobile experiences with <span className="text-cyan-400 font-medium">Flutter</span>{" "}
-                  and native <span className="text-green-400 font-medium">Android development</span>, while bringing
-                  designs to life through <span className="text-purple-400 font-medium">intuitive UX/UI</span> with
-                  smooth animations.
+                <motion.p className="transition-all duration-300 hover:text-foreground text-lg" whileHover={{ x: 10 }}>
+                  Specializing in <span className="text-primary font-medium">Next.js enterprise applications</span>, 
+                  <span className="text-blue-400 font-medium"> Flutter mobile solutions</span>, and 
+                  <span className="text-accent font-medium"> AI automation systems</span> that eliminate bottlenecks and 
+                  multiply productivity. Every line of code serves a business purpose.
                 </motion.p>
 
-                <motion.p className="transition-all duration-300 hover:text-white" whileHover={{ x: 10 }}>
-                  My goal is to bridge the gap between functionality and aesthetics, creating digital experiences that
-                  are both powerful and delightful to use.
+                <motion.p className="transition-all duration-300 hover:text-foreground text-lg" whileHover={{ x: 10 }}>
+                  My approach combines <span className="text-purple-400 font-medium">cutting-edge technology</span> with 
+                  <span className="text-yellow-400 font-medium"> business intelligence</span>, creating solutions that don't just work—they 
+                  <span className="text-green-400 font-medium"> generate ROI from day one</span>.
                 </motion.p>
               </div>
             </AnimatedSection>
 
             {/* Skills with Progress Bars */}
             <AnimatedSection delay={0.4}>
-              <div className="space-y-6" ref={skillsRef}>
-                <h3 className="text-2xl font-semibold text-white mb-6">Technical Skills</h3>
+              <div className="space-y-4 sm:space-y-6" ref={skillsRef}>
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 sm:mb-6 purple-neon-text">Technical Skills</h3>
                 <motion.div
                   className="space-y-4"
                   variants={containerVariants}
@@ -157,39 +168,23 @@ export default function AboutSection() {
                         <div className="flex items-center space-x-3">
                           <skill.icon
                             className={`w-5 h-5 ${
-                              skill.color.includes("orange")
-                                ? "text-orange-500"
-                                : skill.color.includes("blue")
-                                  ? "text-blue-400"
-                                  : skill.color.includes("cyan")
-                                    ? "text-cyan-400"
-                                    : skill.color.includes("green")
-                                      ? "text-green-400"
-                                      : skill.color.includes("purple")
-                                        ? "text-purple-400"
-                                        : "text-indigo-400"
+                              skill.color.includes("primary")
+                                ? "text-primary"
+                                : "text-accent"
                             }`}
                           />
-                          <span className="text-white font-medium">{skill.name}</span>
+                          <span className="text-foreground font-medium">{skill.name}</span>
                         </div>
-                        <span className="text-gray-400 text-sm">{skill.level}%</span>
+                        <span className="text-muted-foreground text-sm">{skill.level}%</span>
                       </div>
 
                       <div className="relative">
-                        <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div className="w-full bg-muted rounded-full h-2">
                           <motion.div
-                            className={`h-2 rounded-full ${
-                              skill.color.includes("orange")
-                                ? "bg-orange-500"
-                                : skill.color.includes("blue")
-                                  ? "bg-blue-400"
-                                  : skill.color.includes("cyan")
-                                    ? "bg-cyan-400"
-                                    : skill.color.includes("green")
-                                      ? "bg-green-400"
-                                      : skill.color.includes("purple")
-                                        ? "bg-purple-400"
-                                        : "bg-indigo-400"
+                            className={`h-2 rounded-full bg-gradient-to-r ${
+                              skill.color.includes("primary")
+                                ? "from-primary to-purple-400"
+                                : "from-accent to-yellow-400"
                             }`}
                             initial={{ width: 0 }}
                             animate={isSkillsInView ? { width: `${skill.level}%` } : { width: 0 }}
@@ -199,7 +194,7 @@ export default function AboutSection() {
 
                         {/* Skill Description Tooltip */}
                         <motion.div
-                          className="absolute -top-12 left-0 bg-gray-800 text-white text-sm px-3 py-2 rounded-lg shadow-lg z-10"
+                          className="absolute -top-12 left-0 bg-card border border-border text-foreground text-sm px-3 py-2 rounded-lg shadow-lg z-10"
                           initial={{ opacity: 0, y: 10 }}
                           animate={{
                             opacity: hoveredSkill === index ? 1 : 0,
@@ -208,7 +203,7 @@ export default function AboutSection() {
                           transition={{ duration: 0.2 }}
                         >
                           {skill.description}
-                          <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+                          <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-card"></div>
                         </motion.div>
                       </div>
                     </motion.div>
@@ -223,24 +218,82 @@ export default function AboutSection() {
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
-                    className="text-center p-4 bg-gray-800/30 rounded-lg hover:bg-gray-800/50 transition-colors duration-300"
+                    className="text-center p-4 bg-card/30 rounded-lg hover:bg-card/50 transition-colors duration-300"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.05 }}
                     viewport={{ once: true }}
                   >
-                    <stat.icon className="w-6 h-6 text-orange-500 mx-auto mb-2" />
-                    <div className="text-xl font-bold text-white">{stat.value}</div>
-                    <div className="text-xs text-gray-400">{stat.label}</div>
+                    <stat.icon className="w-6 h-6 text-accent mx-auto mb-2" />
+                    <div className="text-xl font-bold text-foreground">{stat.value}</div>
+                    <div className="text-xs text-muted-foreground">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
             </AnimatedSection>
           </div>
 
-          {/* Right Column - Info Cards */}
-          <div className="space-y-6">
+          {/* Right Column - Profile & Info Cards */}
+          <div className="space-y-8">
+            {/* Profile Image Section */}
+            <AnimatedSection delay={0.1}>
+              <div className="text-center">
+                <motion.div
+                  className="relative inline-block"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 mx-auto">
+                    {/* Static Border */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 p-1">
+                      <div className="w-full h-full rounded-full bg-background p-2">
+                        <img
+                          src="/profile.JPG"
+                          alt="Rajesh Shrirao - Full Stack Developer"
+                          className="w-full h-full object-cover rounded-full"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Floating Elements */}
+                    <motion.div
+                      className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 rounded-full flex items-center justify-center text-xs font-bold text-black"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                    >
+                      ✓
+                    </motion.div>
+                    
+                    <motion.div
+                      className="absolute -bottom-2 -left-2 px-3 py-1 bg-purple-500/20 rounded-full border border-purple-500/30"
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                    >
+                      <span className="text-purple-300 text-xs font-medium">Available</span>
+                    </motion.div>
+                  </div>
+                </motion.div>
+                
+                <motion.div
+                  className="mt-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-2xl font-bold text-foreground mb-2 purple-neon-text">Rajesh Shrirao</h3>
+                  <p className="text-muted-foreground">21 • BCA Graduate • Full-Stack Developer</p>
+                  <div className="flex justify-center mt-4">
+                    <div className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-yellow-500/20 rounded-full border border-purple-500/30">
+                      <span className="text-purple-300 text-sm font-medium">Elite Developer</span>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </AnimatedSection>
             <AnimatedSection delay={0.3}>
               <div className="grid gap-4">
                 {highlights.map((item, index) => (
@@ -251,19 +304,19 @@ export default function AboutSection() {
                     transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="bg-gray-900/50 border-gray-800 hover:border-orange-500/30 transition-all duration-500 hover:bg-gray-900/70 group">
+                    <Card className="bg-card/50 border-border hover:border-primary/30 transition-all duration-500 hover:bg-card/70 group">
                       <CardContent className="p-6">
                         <div className="flex items-center space-x-4">
                           <motion.div
-                            className="w-12 h-12 bg-orange-500/10 rounded-full flex items-center justify-center group-hover:bg-orange-500/20 transition-colors duration-300"
+                            className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300"
                             whileHover={{ rotate: 360 }}
                             transition={{ duration: 0.5 }}
                           >
-                            <item.icon className="w-6 h-6 text-orange-500" />
+                            <item.icon className="w-6 h-6 text-accent" />
                           </motion.div>
                           <div>
-                            <p className="text-gray-400 text-sm font-medium">{item.label}</p>
-                            <p className="text-white text-lg font-semibold">{item.value}</p>
+                            <p className="text-muted-foreground text-sm font-medium">{item.label}</p>
+                            <p className="text-foreground text-lg font-semibold">{item.value}</p>
                           </div>
                         </div>
                       </CardContent>
@@ -275,21 +328,21 @@ export default function AboutSection() {
 
             {/* Experience Summary Card */}
             <AnimatedSection delay={0.6}>
-              <Card className="bg-gradient-to-br from-gray-900/50 to-gray-800/30 border-gray-700 hover:border-orange-500/30 transition-all duration-500 group">
+              <Card className="bg-gradient-to-br from-card/50 to-muted/30 border-border hover:border-primary/30 transition-all duration-500 group">
                 <CardContent className="p-8 text-center">
                   <div className="space-y-4">
                     <motion.div
-                      className="w-16 h-16 bg-orange-500/10 rounded-full flex items-center justify-center mx-auto group-hover:bg-orange-500/20 transition-colors duration-300"
+                      className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto group-hover:bg-primary/20 transition-colors duration-300"
                       whileHover={{ scale: 1.1, rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <Code className="w-8 h-8 text-orange-500" />
+                      <Code className="w-8 h-8 text-primary" />
                     </motion.div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">Full-Stack Developer</h3>
-                      <p className="text-gray-400 leading-relaxed">
-                        Crafting end-to-end solutions from responsive web applications to mobile experiences, with a
-                        keen eye for design and user experience.
+                      <h3 className="text-2xl font-bold text-foreground mb-2">Full-Stack Developer</h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        Crafting intelligent solutions from Next.js web applications to Flutter mobile experiences, 
+                        with AI automation and exceptional user design.
                       </p>
                     </div>
                   </div>
@@ -300,14 +353,14 @@ export default function AboutSection() {
             {/* Interactive Quote */}
             <AnimatedSection delay={0.8}>
               <motion.div
-                className="bg-gradient-to-r from-orange-500/10 to-transparent p-6 rounded-lg border-l-4 border-orange-500"
+                className="bg-gradient-to-r from-accent/10 to-transparent p-6 rounded-lg border-l-4 border-accent"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <p className="text-gray-300 italic text-lg leading-relaxed">
-                  "Code is like humor. When you have to explain it, it's bad."
+                <p className="text-muted-foreground italic text-lg leading-relaxed">
+                  "The best way to predict the future is to create it with intelligent automation."
                 </p>
-                <p className="text-orange-500 text-sm mt-2">- Cory House</p>
+                <p className="text-accent text-sm mt-2">- My Development Philosophy</p>
               </motion.div>
             </AnimatedSection>
           </div>
@@ -316,7 +369,7 @@ export default function AboutSection() {
         {/* Bottom Accent Line */}
         <AnimatedSection delay={0.8} className="mt-20">
           <motion.div
-            className="h-px bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"
+            className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 1 }}
