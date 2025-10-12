@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { GlassNav } from "@/components/ui/glass-morphism"
 import { HireMeButton } from "@/components/ui/premium-button"
-import { FloatingTechIcons } from "@/components/ui/floating-tech-icons"
 import { useDeviceCapabilities } from "@/lib/hooks/use-device-capabilities"
 import { Menu, X, Code, Zap, Globe, Smartphone, BookOpen } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -66,59 +65,76 @@ export default function Navigation() {
   }
 
   return (
-    <GlassNav
-      sticky={true}
-      className={`transition-all duration-500 ${
-        isScrolled ? 'glass-nav-scrolled' : 'glass-nav-transparent'
-      }`}
-      intensity={isScrolled ? 'high' : 'medium'}
+    <header 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        // Glass morphism background
+        "bg-gradient-to-br from-white/10 via-purple-500/10 to-white/5",
+        "backdrop-blur-xl",
+        // Enhanced visibility
+        "border-b border-white/20",
+        // Shadow effects
+        isScrolled 
+          ? "shadow-2xl shadow-purple-500/20" 
+          : "shadow-lg shadow-purple-500/10"
+      )}
+      role="banner"
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
-        <div className="flex justify-between items-center py-2 sm:py-2.5 lg:py-3 min-h-[52px] sm:min-h-[56px] lg:min-h-[60px]">
-          {/* Clean Logo */}
-          <motion.div
-            className="flex items-center"
-            whileHover={!reducedMotion ? { scale: 1.02 } : {}}
+        <div className="flex justify-between items-center py-3 sm:py-3.5 lg:py-4 min-h-[56px] sm:min-h-[60px] lg:min-h-[64px]">
+          {/* Premium Logo */}
+          <motion.button
+            onClick={() => scrollToSection("home")}
+            className="flex items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-400/50 rounded-md"
+            whileHover={!reducedMotion ? { scale: 1.05 } : {}}
+            whileTap={!reducedMotion ? { scale: 0.98 } : {}}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <span className="text-base sm:text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent purple-neon-text">
-              {"<RajeshShrirao />"}
+            <span className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">
+              {"<Dev />"}
             </span>
-          </motion.div>
+          </motion.button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+          <div className="hidden md:flex items-center gap-2 lg:gap-3" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => {
               const IconComponent = item.icon
+              const isActive = activeSection === item.id
               return (
                 <motion.button
                   key={item.id}
                   onClick={() => handleNavigation(item)}
-                  className={`flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 lg:py-2 rounded-md transition-all duration-300 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:ring-offset-1 focus:ring-offset-background ${
-                    activeSection === item.id
-                      ? "text-purple-400 bg-purple-500/15 border border-purple-500/30 purple-neon-glow"
-                      : "text-white/80 hover:text-white hover:bg-white/10 hover:purple-neon-subtle"
-                  }`}
-                  whileHover={!reducedMotion ? { y: -0.5, scale: 1.01 } : {}}
+                  className={cn(
+                    "relative flex items-center gap-1.5 px-3 lg:px-4 py-2 lg:py-2.5 rounded-lg",
+                    "transition-all duration-300 font-semibold text-sm",
+                    "focus:outline-none focus:ring-2 focus:ring-purple-400/50",
+                    "border backdrop-blur-sm",
+                    isActive
+                      ? "text-white bg-gradient-to-r from-purple-500/50 to-pink-500/50 border-purple-400/70 shadow-lg shadow-purple-500/40"
+                      : "text-white bg-white/10 border-white/30 hover:text-white hover:bg-white/20 hover:border-white/50"
+                  )}
+                  whileHover={!reducedMotion ? { y: -1, scale: 1.05 } : {}}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   aria-label={`Navigate to ${item.label} section`}
                   role="menuitem"
                 >
-                  <IconComponent size={14} className="w-3.5 h-3.5" />
-                  <span className="hidden lg:inline text-sm">{item.label}</span>
+                  <IconComponent size={16} className="w-4 h-4" />
+                  <span className="hidden lg:inline text-sm whitespace-nowrap">{item.label}</span>
                 </motion.button>
               )
             })}
 
-            {/* Premium Hire Me Button */}
-            <HireMeButton
-              onClick={() => scrollToSection("contact")}
-              size="sm"
-              className="ml-2 lg:ml-3 text-sm"
-              animated={!reducedMotion}
-            >
-              Hire Me
-            </HireMeButton>
+            {/* Premium CTA Button */}
+            <div className="ml-2 lg:ml-4">
+              <HireMeButton
+                onClick={() => scrollToSection("contact")}
+                size="md"
+                className="text-sm lg:text-base shadow-xl shadow-purple-500/25 whitespace-nowrap"
+                animated={!reducedMotion}
+              >
+                Let's Talk
+              </HireMeButton>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -166,11 +182,14 @@ export default function Navigation() {
                       <motion.button
                         key={item.id}
                         onClick={() => handleNavigation(item)}
-                        className={`flex items-center gap-2.5 px-3 py-2 rounded-md transition-all duration-300 font-medium text-left text-sm focus:outline-none focus:ring-2 focus:ring-purple-400/50 focus:ring-offset-1 focus:ring-offset-background ${
+                        className={cn(
+                          "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 font-semibold text-left text-base",
+                          "focus:outline-none focus:ring-2 focus:ring-purple-400/50",
+                          "backdrop-blur-sm",
                           activeSection === item.id
-                            ? "text-purple-400 bg-purple-500/15 border border-purple-500/30 purple-neon-glow"
-                            : "text-white/80 hover:text-white hover:bg-white/10 hover:purple-neon-subtle"
-                        }`}
+                            ? "text-white bg-gradient-to-r from-purple-500/40 to-pink-500/40 border border-purple-400/60 shadow-lg shadow-purple-500/30"
+                            : "text-white/90 hover:text-white hover:bg-white/20 hover:border hover:border-white/30"
+                        )}
                         initial={{ x: -20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: index * 0.08, duration: 0.25 }}
@@ -191,12 +210,12 @@ export default function Navigation() {
                   >
                     <HireMeButton
                       onClick={() => scrollToSection("contact")}
-                      size="md"
+                      size="lg"
                       fullWidth={true}
-                      className="text-sm"
+                      className="text-base shadow-xl shadow-purple-500/25"
                       animated={!reducedMotion}
                     >
-                      Hire Me
+                      Let's Talk
                     </HireMeButton>
                   </motion.div>
                 </div>
@@ -205,18 +224,6 @@ export default function Navigation() {
           )}
         </AnimatePresence>
       </div>
-
-      {/* Floating Tech Icons Background */}
-      {performanceTier === 'elite' && !reducedMotion && (
-        <div className="absolute inset-0 pointer-events-none">
-          <FloatingTechIcons
-            count={3}
-            size="xs"
-            animated={true}
-            className="opacity-15"
-          />
-        </div>
-      )}
-    </GlassNav>
+    </header>
   )
 }

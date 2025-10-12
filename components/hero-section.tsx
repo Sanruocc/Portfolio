@@ -85,18 +85,23 @@ export default function HeroSection() {
           className="mb-12 sm:mb-16"
         >
           <LuxuryHeading
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 leading-tight"
             glow={true}
           >
-            I Build Digital Products That
-            <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent">
-              Drive Business Growth
+            Crafting Digital
+            <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent animate-gradient">
+              Experiences
+            </span>
+            <span className="block text-gray-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal mt-2">
+              That Drive Results
             </span>
           </LuxuryHeading>
 
-          <LuxurySubheading className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white/90 mb-12 text-shadow-soft max-w-4xl mx-auto leading-relaxed">
-            Full-stack architect specializing in Next.js, Flutter, and AI automation.
-            I transform complex challenges into scalable solutions that deliver measurable results.
+          <LuxurySubheading className="text-xl sm:text-2xl text-white/80 mb-8 text-shadow-soft max-w-4xl mx-auto leading-relaxed">
+            Full-stack developer specializing in building{" "}
+            <span className="text-white font-semibold">scalable web applications</span>,{" "}
+            <span className="text-white font-semibold">modern UX design</span>, and{" "}
+            <span className="text-white font-semibold">cloud architecture</span>
           </LuxurySubheading>
         </motion.div>
 
@@ -185,17 +190,17 @@ export default function HeroSection() {
 
               {/* Key Benefits Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-emerald-400 mb-2 luxury-heading">5+ Years</div>
-                  <div className="text-sm text-white/80 luxury-body">Production Experience</div>
+                <div className="text-center p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                  <div className="text-3xl sm:text-4xl font-bold text-purple-400 mb-2 luxury-heading">50+</div>
+                  <div className="text-sm text-white/80 luxury-body">Projects Delivered</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-sapphire-400 mb-2 luxury-heading">$10M+</div>
-                  <div className="text-sm text-white/80 luxury-body">Revenue Generated</div>
+                <div className="text-center p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-pink-500/30 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                  <div className="text-3xl sm:text-4xl font-bold text-pink-400 mb-2 luxury-heading">5+</div>
+                  <div className="text-sm text-white/80 luxury-body">Years Experience</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-ruby-400 mb-2 luxury-heading">50K+</div>
-                  <div className="text-sm text-white/80 luxury-body">Happy Users</div>
+                <div className="text-center p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-yellow-500/30 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                  <div className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2 luxury-heading">100%</div>
+                  <div className="text-sm text-white/80 luxury-body">Client Satisfaction</div>
                 </div>
               </div>
             </div>
@@ -211,15 +216,15 @@ export default function HeroSection() {
               size="md"
               animated={supportsAdvancedAnimations}
               shimmer={true}
-              className="group w-full sm:w-auto min-h-[44px] text-sm sm:text-base"
+              className="group w-full sm:w-auto min-h-[44px] text-sm sm:text-base px-8 py-6 text-lg font-bold"
             >
-              Start Your Project
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              View My Work
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
             </LuxuryButton>
 
             <LuxuryButton
               onClick={() => {
-                const element = document.getElementById("projects")
+                const element = document.getElementById("contact")
                 if (element) {
                   element.scrollIntoView({ behavior: "smooth" })
                 }
@@ -227,16 +232,10 @@ export default function HeroSection() {
               variant="glass"
               size="md"
               animated={supportsAdvancedAnimations}
-              className="group w-full sm:w-auto min-h-[44px] text-sm sm:text-base"
+              className="group w-full sm:w-auto min-h-[44px] text-sm sm:text-base px-8 py-6 text-lg font-bold"
             >
-              View Portfolio
-              <motion.span
-                className="ml-2 inline-block"
-                animate={!reducedMotion ? { y: [0, -2, 0] } : {}}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: [0.34, 1.56, 0.64, 1] }}
-              >
-                ↓
-              </motion.span>
+              Let's Talk
+              <Mail className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform" />
             </LuxuryButton>
           </div>
         </motion.div>
