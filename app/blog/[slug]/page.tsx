@@ -1,5 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
+import { sanityFetch, urlFor } from '@/lib/sanity.client'
+import { blogPostBySlugQuery } from '@/lib/sanity.queries'
+import type { BlogPost } from '@/lib/sanity.types'
+import { PortableText } from '@portabletext/react'
 
 interface Props {
   params: {
@@ -8,13 +14,73 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await sanityFetch<BlogPost>({
+    query: blogPostBySlugQuery,
+    params: { slug: params.slug },
+    tags: [`blogPost:${params.slug}`],
+  })
+
+  if (!post) {
+    return {
+      title: 'Blog Post Not Found | Rajesh Shrirao',
+    }
+  }
+
   return {
-    title: 'Blog Post | Rajesh Shrirao',
-    description: 'Blog post from Rajesh Shrirao',
+    title: post.seo?.metaTitle || `${post.title} | Rajesh Shrirao`,
+    description: post.seo?.metaDescription || post.excerpt,
+    keywords: post.seo?.keywords,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: post.mainImage ? [urlFor(post.mainImage).width(1200).height(630).url()] : [],
+    },
   }
 }
 
-export default function BlogPost({ params }: Props) {
+const portableTextComponents = {
+  types: {
+    image: ({ value }: any) => {
+      return (
+        <div className="my-8">
+          <Image
+            src={urlFor(value).width(800).url()}
+            alt={value.alt || 'Blog post image'}
+            width={800}
+            height={500}
+            className="rounded-lg"
+          />
+        </div>
+      )
+    },
+    code: ({ value }: any) => {
+      return (
+        <pre className="my-4 p-4 bg-gray-900 rounded-lg overflow-x-auto">
+          <code className="text-sm text-gray-100">{value.code}</code>
+        </pre>
+      )
+    },
+  },
+  block: {
+    h2: ({ children }: any) => <h2 className="text-3xl font-bold mt-8 mb-4">{children}</h2>,
+    h3: ({ children }: any) => <h3 className="text-2xl font-semibold mt-6 mb-3">{children}</h3>,
+    h4: ({ children }: any) => <h4 className="text-xl font-semibold mt-4 mb-2">{children}</h4>,
+  },
+}
+
+export default async function BlogPost({ params }: Props) {
+  const post = await sanityFetch<BlogPost>({
+    query: blogPostBySlugQuery,
+    params: { slug: params.slug },
+    tags: [`blogPost:${params.slug}`],
+  })
+
+  if (!post) {
+    notFound()
+  }
+
+  const author = typeof post.author === 'object' ? post.author : null
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-16">
@@ -29,46 +95,47 @@ export default function BlogPost({ params }: Props) {
 
           {/* Post Header */}
           <header className="mb-8">
-            <div className="aspect-video relative mb-8 rounded-lg overflow-hidden bg-gradient-to-r from-purple-600 to-yellow-500">
-              <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold opacity-20">
-                📝
+            {post.mainImage && (
+              <div className="aspect-video relative mb-8 rounded-lg overflow-hidden">
+                <Image
+                  src={urlFor(post.mainImage).width(1200).height(675).url()}
+                  alt={post.mainImage.alt || post.title}
+                  fill
+                  className="object-cover"
+                />
               </div>
-            </div>
+            )}
             
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-yellow-500 bg-clip-text text-transparent">
-              Blog Post Coming Soon
+              {post.title}
             </h1>
             
             <p className="text-xl text-muted-foreground mb-6">
-              This blog post is being migrated to Sanity CMS.
+              {post.excerpt}
             </p>
             
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <span>By Rajesh Shrirao</span>
-              <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
-                Migration
-              </span>
+              {author && <span>By {author.name}</span>}
+              <span>{new Date(post.publishedAt).toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}</span>
+              {post.categories && post.categories.length > 0 && (
+                <div className="flex gap-2">
+                  {post.categories.map((category, idx) => (
+                    <span key={idx} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
+                      {category}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </header>
 
           {/* Post Content */}
-          <div className="prose prose-lg max-w-none">
-            <p>
-              We're currently migrating our blog from Payload CMS to Sanity CMS for better performance and developer experience.
-            </p>
-            <p>
-              This blog post will be available once the migration is complete. Please check back soon or visit our main blog page for other articles.
-            </p>
-            <h2>What to Expect</h2>
-            <ul>
-              <li>Faster page loads with Sanity's CDN</li>
-              <li>Better content editing experience</li>
-              <li>Improved SEO and performance</li>
-              <li>Real-time content updates</li>
-            </ul>
-            <p>
-              Thank you for your patience during this migration period.
-            </p>
+          <div className="prose prose-lg prose-invert max-w-none">
+            {post.body && <PortableText value={post.body} components={portableTextComponents} />}
           </div>
 
           {/* Post Footer */}
@@ -78,7 +145,7 @@ export default function BlogPost({ params }: Props) {
                 Interested in our development services? Get in touch!
               </p>
               <Link 
-                href="/contact"
+                href="/#contact"
                 className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
               >
                 Get in Touch
