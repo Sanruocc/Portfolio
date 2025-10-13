@@ -11,12 +11,15 @@ import { category } from './sanity/schemas/category'
 
 const schemaTypes = [blogPost, project, author, category]
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
+
 export default defineConfig({
   name: 'default',
   title: 'Rajesh Portfolio',
   
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  projectId,
+  dataset,
   
   basePath: '/studio',
   
