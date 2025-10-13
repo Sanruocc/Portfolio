@@ -32,4 +32,9 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
+  
+  // Allow studio to work on both local and production URLs
+  studio: {
+    studioHost: 'rajeshshrirao',
+  },
 })
