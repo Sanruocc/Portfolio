@@ -96,7 +96,7 @@ export default function Navigation() {
           </motion.button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-3" role="navigation" aria-label="Main navigation">
+          <nav className="flex items-center gap-1.5 lg:gap-2 max-md:hidden" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => {
               const IconComponent = item.icon
               const isActive = activeSection === item.id
@@ -105,37 +105,38 @@ export default function Navigation() {
                   key={item.id}
                   onClick={() => handleNavigation(item)}
                   className={cn(
-                    "relative flex items-center gap-1.5 px-3 lg:px-4 py-2 lg:py-2.5 rounded-lg",
-                    "transition-all duration-300 font-semibold text-sm",
+                    "relative flex items-center gap-1.5 px-2.5 lg:px-3.5 py-2 rounded-lg",
+                    "transition-all duration-300 font-medium text-sm lg:text-base",
                     "focus:outline-none focus:ring-2 focus:ring-purple-400/50",
-                    "border backdrop-blur-sm",
+                    "border backdrop-blur-sm whitespace-nowrap",
                     isActive
-                      ? "text-white bg-gradient-to-r from-purple-500/50 to-pink-500/50 border-purple-400/70 shadow-lg shadow-purple-500/40"
-                      : "text-white bg-white/10 border-white/30 hover:text-white hover:bg-white/20 hover:border-white/50"
+                      ? "text-white bg-gradient-to-r from-purple-500/60 to-pink-500/60 border-purple-400/80 shadow-lg shadow-purple-500/50"
+                      : "text-white/95 bg-white/15 border-white/40 hover:text-white hover:bg-gradient-to-r hover:from-purple-500/40 hover:to-pink-500/40 hover:border-purple-400/60 hover:shadow-md hover:shadow-purple-500/30"
                   )}
-                  whileHover={!reducedMotion ? { y: -1, scale: 1.05 } : {}}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  whileHover={!reducedMotion ? { y: -2, scale: 1.03 } : {}}
+                  whileTap={!reducedMotion ? { scale: 0.98 } : {}}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   aria-label={`Navigate to ${item.label} section`}
                   role="menuitem"
                 >
-                  <IconComponent size={16} className="w-4 h-4" />
-                  <span className="hidden lg:inline text-sm whitespace-nowrap">{item.label}</span>
+                  <IconComponent size={16} className="w-4 h-4 flex-shrink-0" />
+                  <span className="hidden md:inline lg:inline text-sm lg:text-base">{item.label}</span>
                 </motion.button>
               )
             })}
 
             {/* Premium CTA Button */}
-            <div className="ml-2 lg:ml-4">
+            <div className="ml-1 lg:ml-3">
               <HireMeButton
                 onClick={() => scrollToSection("contact")}
                 size="md"
-                className="text-sm lg:text-base shadow-xl shadow-purple-500/25 whitespace-nowrap"
+                className="text-sm lg:text-base shadow-xl shadow-purple-500/30 whitespace-nowrap font-semibold"
                 animated={!reducedMotion}
               >
                 Let's Talk
               </HireMeButton>
             </div>
-          </div>
+          </nav>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
