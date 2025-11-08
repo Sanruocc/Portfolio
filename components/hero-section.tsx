@@ -1,17 +1,12 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { GlassCard } from "@/components/ui/glass-morphism"
-import { LuxuryGlassCard } from "@/components/ui/luxury-glass-morphism"
-import { LuxuryButton } from "@/components/ui/luxury-button"
 import { LuxuryHeading, LuxurySubheading } from "@/components/ui/luxury-typography"
-import { HireMeButton } from "@/components/ui/premium-button"
 import { PremiumBackground } from "@/components/ui/premium-background"
 import { FloatingTechIcons } from "@/components/ui/floating-tech-icons"
 import { useDeviceCapabilities } from "@/lib/hooks/use-device-capabilities"
 import { useAdvancedPerformance } from "@/lib/hooks/use-advanced-performance"
-import { ArrowRight, Mail } from "lucide-react"
-import Link from "next/link"
+import { HeroBentoGrid } from "@/components/custom/hero-bento-grid"
 import { useState, useEffect } from "react"
 
 export default function HeroSection() {
@@ -105,140 +100,15 @@ export default function HeroSection() {
           </LuxurySubheading>
         </motion.div>
 
-        {/* Tech Stack Showcase */}
+        {/* 3D Bento Grid */}
         <motion.div
           variants={luxuryItemVariants}
           className="mb-12 sm:mb-16"
         >
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6">
-            <div className="px-3 py-1.5 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full border border-purple-500/30">
-              <span className="text-purple-300 font-medium text-xs sm:text-sm">Next.js</span>
-            </div>
-            <div className="px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full border border-blue-500/30">
-              <span className="text-blue-300 font-medium text-xs sm:text-sm">Flutter</span>
-            </div>
-            <div className="px-3 py-1.5 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-full border border-yellow-500/30">
-              <span className="text-yellow-300 font-medium text-xs sm:text-sm">AI Automation</span>
-            </div>
-            <div className="px-3 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full border border-green-500/30">
-              <span className="text-green-300 font-medium text-xs sm:text-sm">TypeScript</span>
-            </div>
-            <div className="px-3 py-1.5 bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-full border border-red-500/30">
-              <span className="text-red-300 font-medium text-xs sm:text-sm">Python</span>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="relative min-h-[1.5em] min-w-[280px] sm:min-w-[350px] flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={`text-${currentTextIndex}`}
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: -20,
-                  }}
-                  transition={{
-                    duration: 0.4,
-                    ease: "easeInOut",
-                  }}
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent animate-purple-pulse"
-                >
-                  {rotatingTexts[currentTextIndex]} Solutions
-                </motion.span>
-              </AnimatePresence>
-            </div>
-
-            {/* Typing cursor effect */}
-            <motion.span
-              className="text-purple-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl purple-neon-text"
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{
-                duration: 1,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "easeInOut"
-              }}
-            >
-              |
-            </motion.span>
-          </div>
+          <HeroBentoGrid />
         </motion.div>
 
-        {/* Value Proposition */}
-        <motion.div variants={luxuryItemVariants} className="mb-12 sm:mb-16">
-          <LuxuryGlassCard
-            className="max-w-4xl mx-auto"
-            intensity="luxury"
-            layers={supportsMultiLayerGlass ? 4 : 2}
-            hover={true}
-            animated={supportsAdvancedAnimations}
-          >
-            <div className="text-center">
-              <p className="text-base sm:text-lg lg:text-xl text-white/95 leading-relaxed mb-8 luxury-body">
-              My approach combines technical excellence with business acumen to deliver solutions that
-                <span className="text-yellow-400 font-semibold"> scale efficiently</span>,
-                <span className="text-purple-400 font-semibold"> convert visitors</span>, and
-                <span className="text-pink-400 font-semibold"> retain customers</span>
-              </p>
 
-              {/* Key Benefits Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
-                <div className="text-center p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                  <div className="text-3xl sm:text-4xl font-bold text-purple-400 mb-2 luxury-heading">50+</div>
-                  <div className="text-sm text-white/80 luxury-body">Projects Delivered</div>
-                </div>
-                <div className="text-center p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-pink-500/30 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                  <div className="text-3xl sm:text-4xl font-bold text-pink-400 mb-2 luxury-heading">5+</div>
-                  <div className="text-sm text-white/80 luxury-body">Years Experience</div>
-                </div>
-                <div className="text-center p-4 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/10 hover:border-yellow-500/30 hover:bg-white/10 transition-all duration-300 hover:scale-105">
-                  <div className="text-3xl sm:text-4xl font-bold text-yellow-400 mb-2 luxury-heading">100%</div>
-                  <div className="text-sm text-white/80 luxury-body">Client Satisfaction</div>
-                </div>
-              </div>
-            </div>
-          </LuxuryGlassCard>
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div variants={luxuryItemVariants} className="mb-16 sm:mb-20">
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0">
-            <LuxuryButton
-              onClick={scrollToProjects}
-              variant="primary"
-              size="md"
-              animated={supportsAdvancedAnimations}
-              shimmer={true}
-              className="group w-full sm:w-auto min-h-[44px] text-sm sm:text-base px-8 py-6 text-lg font-bold"
-            >
-              View My Work
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </LuxuryButton>
-
-            <LuxuryButton
-              onClick={() => {
-                const element = document.getElementById("contact")
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" })
-                }
-              }}
-              variant="glass"
-              size="md"
-              animated={supportsAdvancedAnimations}
-              className="group w-full sm:w-auto min-h-[44px] text-sm sm:text-base px-8 py-6 text-lg font-bold"
-            >
-              Let's Talk
-              <Mail className="ml-2 w-5 h-5 group-hover:rotate-12 transition-transform" />
-            </LuxuryButton>
-          </div>
-        </motion.div>
       </motion.div>
 
       {/* Floating Tech Icons Background */}

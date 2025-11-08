@@ -28,7 +28,9 @@ export default function Home() {
         <SectionDivider variant="wave" className="text-[hsl(var(--background))]" colorClass="fill-background" />
         <SkillsSection />
         <SectionDivider variant="angle" flip className="text-[hsl(var(--background))]" colorClass="fill-background" />
-        <PortfolioGrid />
+        <section id="projects">
+          <PortfolioGrid />
+        </section>
         <SectionDivider variant="wave" className="text-[hsl(var(--background))]" colorClass="fill-background" />
         <AboutSection />
         <SectionDivider variant="wave" flip className="text-[hsl(var(--background))]" colorClass="fill-background" />
