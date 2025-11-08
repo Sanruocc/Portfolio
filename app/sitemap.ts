@@ -8,7 +8,9 @@ interface BlogPost {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rajeshshrirao.vercel.app'
+  // Use environment variable or construct from Vercel environment
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 
+                  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://rajeshshrirao.vercel.app')
 
   // 3 Flagship Web Development Projects
   const flagshipProjects = [
