@@ -50,7 +50,6 @@ export default function Navigation() {
     { id: "skills", label: "Skills", icon: Zap },
     { id: "projects", label: "Projects", icon: Globe },
     { id: "blog", label: "Blog", icon: BookOpen },
-    { id: "fiverr", label: "Fiverr", icon: Smartphone },
     { id: "about", label: "About", icon: Code },
     { id: "contact", label: "Contact", icon: Globe },
   ]

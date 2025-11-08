@@ -2,7 +2,6 @@ import Navigation from "../components/navigation"
 import HeroSection from "../components/hero-section"
 import SkillsSection from "../components/skills-section"
 import PortfolioGrid from "../components/portfolio-grid"
-import FiverrGallery from "../components/fiverr-gallery"
 import AboutSection from "../components/about-section"
 import ContactSection from "../components/contact-section"
 import Footer from "../components/footer"
@@ -31,8 +30,6 @@ export default function Home() {
         <SectionDivider variant="angle" flip className="text-[hsl(var(--background))]" colorClass="fill-background" />
         <PortfolioGrid />
         <SectionDivider variant="wave" className="text-[hsl(var(--background))]" colorClass="fill-background" />
-        <FiverrGallery />
-        <SectionDivider variant="angle" className="text-[hsl(var(--background))]" colorClass="fill-background" />
         <AboutSection />
         <SectionDivider variant="wave" flip className="text-[hsl(var(--background))]" colorClass="fill-background" />
         <ContactSection />

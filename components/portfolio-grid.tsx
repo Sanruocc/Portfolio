@@ -16,34 +16,34 @@ export default function PortfolioGrid() {
   const projects = [
     {
       id: 1,
-      slug: "ai-chatbot-automation",
-      title: "Enterprise AI Automation Suite",
+      slug: "invoiceflowme-invoicing-payments",
+      title: "InvoiceFlowMe – Instant Invoicing & Payments",
       description:
-        "Enterprise AI automation that reduced support costs by 70% and increased customer satisfaction by 45%. Platform handles 10,000+ daily conversations with 95% accuracy and seamless human escalation.",
-      techStack: "Next.js • AI Agents • Supabase • OpenAI",
+        "A SaaS tool for freelancers and small businesses to create, send, and track invoices. Supports PDF export, Stripe/PayPal demo payments, real-time status updates, income analytics dashboard, and responsive design. Features include instant invoice creation & editing, PDF download & email sending, mock Stripe payment (sandbox), dashboard with analytics, and demo login or guest mode.",
+      techStack: "Next.js • Stripe • MongoDB • React • Node.js",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygwsqvvewm8ts303j23c9z9%2F1750766515_img_0.webp?st=2025-06-24T10%3A13%3A47Z&se=2025-06-30T11%3A13%3A47Z&sks=b&skt=2025-06-24T10%3A13%3A47Z&ske=2025-06-30T12%3A13%3A47Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=DtMTqwmGvNot3tqz4cinw0irtcOIYDGYTwZ7uf%2FypSY%3D&az=oaivgprodscus?",
-      live: "#",
+      live: "https://invoiceflowme.vercel.app",
       featured: true,
     },
     {
       id: 2,
-      slug: "flutter-fintech-app",
-      title: "FinTech Mobile Banking Revolution",
+      slug: "myfitcoach-ai-fitness",
+      title: "MyFitCoach – AI-Powered Fitness App",
       description:
-        "Mobile banking powerhouse that processed $2.3M+ in transactions within Q1 launch. Features bank-grade security, real-time fraud detection, and achieved 4.8★ app store rating with 50K+ downloads.",
-      techStack: "Flutter • Dart • Stripe • Firebase",
+        "Cross-platform fitness app featuring drag & drop workout builder, AI-driven diet/workout plans, trainer chat, video tutorials, and progress tracking charts. Features interactive workout builder, AI-generated routines, live chat (demo bot), data visualizations for progress, and responsive/mobile view.",
+      techStack: "Flutter • Next.js • TensorFlow • MongoDB",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygww4h4etdaszvgwax6rgt8%2F1750766644_img_0.webp?st=2025-06-24T11%3A07%3A42Z&se=2025-06-30T12%3A07%3A42Z&sks=b&skt=2025-06-24T11%3A07%3A42Z&ske=2025-06-30T12%3A07%3A42Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=Iw5yXVs27pX7sG7NqRnAjAEoOcCFDS%2Bs3SJmPo%2FyOCo%3D&az=oaivgprodscus",
-      live: "#",
+      live: "/",
       featured: false,
     },
     {
       id: 3,
-      slug: "saas-dashboard-analytics",
-      title: "AI-Powered Business Intelligence Platform",
-      description: "AI-powered business intelligence platform that accelerated decision-making by 300% and generates $750K+ ARR. Features predictive analytics with 92% accuracy and automated insights that saved 40+ hours weekly.",
-      techStack: "Next.js • TypeScript • Supabase • AI Analytics",
+      slug: "shoply-ecommerce-store",
+      title: "Shoply – Modern E-Commerce Demo Store",
+      description: "Conversion-focused store with instant search, category filters, cart and wishlist, real checkout (sandbox), review/ratings, and admin panel preview. Features fast search/filter, cart & demo checkout, product reviews, admin panel walkthrough, and AI-powered product suggestions.",
+      techStack: "Next.js • Stripe • Firebase • React",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygxcrqjerp93sx8etv3czzk%2F1750767186_img_0.webp?st=2025-06-24T11%3A08%3A15Z&se=2025-06-30T12%3A08%3A15Z&sks=b&skt=2025-06-24T11%3A08%3A15Z&ske=2025-06-30T12%3A08%3A15Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=nRc8o2MX3hIBFqKYJb5jX6D3trXo7Gqi7V71pREfw8o%3D&az=oaivgprodscus",
       live: "#",
@@ -51,10 +51,10 @@ export default function PortfolioGrid() {
     },
     {
       id: 4,
-      slug: "python-automation-suite",
-      title: "Enterprise Workflow Automation Engine",
-      description: "Enterprise automation engine that eliminated 45+ hours of manual work weekly and reduced operational costs by 60%. AI-driven workflows with 99.8% uptime and seamless API orchestration across 20+ platforms.",
-      techStack: "Python • AI Workflows • APIs • Automation",
+      slug: "ai-guru-support-bot",
+      title: "AI Guru – Conversational Support Bot Platform",
+      description: "AI-powered assistant offering tech support, instant chat, ticket system, dashboard view of logs and ticket status, and editable bot personality/FAQ. Features live chatbot interface, simulated ticket creation, dashboard demo, and customizable bot settings.",
+      techStack: "Next.js • OpenAI API • Node.js • Supabase",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygyf350edfaajc2jy4yavk5%2F1750768423_img_0.webp?st=2025-06-24T11%3A09%3A16Z&se=2025-06-30T12%3A09%3A16Z&sks=b&skt=2025-06-24T11%3A09%3A16Z&ske=2025-06-30T12%3A09%3A16Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=v8R7bY71gJ2H%2FbLZhFEmi4xVeERDUkzkg2JfjN1DTsU%3D&az=oaivgprodscus",
       live: "#",
@@ -62,10 +62,10 @@ export default function PortfolioGrid() {
     },
     {
       id: 5,
-      slug: "flutter-ecommerce-app",
-      title: "Next-Gen Mobile Commerce Platform",
-      description: "E-commerce platform that boosted conversion rates by 85% and increased AOV by 62%. Features AR try-on technology, one-tap checkout with 94% success rate, and AI recommendations driving 40% of sales.",
-      techStack: "Flutter • Stripe • UI/UX Design • APIs",
+      slug: "urbannest-real-estate",
+      title: "UrbanNest – Real Estate Portal",
+      description: "Modern property search platform with map-based listings, dynamic filters, agent profiles, visit booking (calendar demo), and chat. Features map search (Google Maps mock), instant filters, agent chat demo, book demo visits/calendar, and responsive & modern UI.",
+      techStack: "Next.js • Google Maps API • MongoDB • React",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygxepn6fv0awcha0vzb3dcx%2F1750767317_img_0.webp?st=2025-06-24T11%3A07%3A42Z&se=2025-06-30T12%3A07%3A42Z&sks=b&skt=2025-06-24T11%3A07%3A42Z&ske=2025-06-30T12%3A07%3A42Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=TClcNbO%2FdJH%2BiaBxO%2B7PoPVTiw6H5lYA01JKLPr3D1o%3D&az=oaivgprodscus",
       live: "#",
@@ -142,14 +142,14 @@ export default function PortfolioGrid() {
               const story = getStorySlices(project.description)
               return (
                 <motion.div key={project.id} variants={cardVariants} whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }}>
-                  <Link href={`/projects/${project.slug}`}>
-                    <GlassCard
-                      className="group overflow-hidden h-full cursor-pointer"
-                      intensity="medium"
-                      hover={true}
-                      glow={project.featured}
-                    >
-                      {/* Project Image */}
+                  <GlassCard
+                    className="group overflow-hidden h-full cursor-pointer"
+                    intensity="medium"
+                    hover={true}
+                    glow={project.featured}
+                  >
+                    {/* Project Image */}
+                    <Link href={`/projects/${project.slug}`} className="block">
                       <div className="relative overflow-hidden">
                         <Image
                           src={project.image || "/placeholder.svg"}
@@ -171,17 +171,27 @@ export default function PortfolioGrid() {
                           </motion.div>
                         )}
 
-                        {/* Overlay with Link */}
+                        {/* Overlay with Demo Link */}
                         <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-                            <div className="p-3 bg-accent rounded-full text-accent-foreground transition-all duration-200">
-                              <ExternalLink className="w-5 h-5" />
-                            </div>
-                          </motion.div>
+                          <Link 
+                            href={project.live} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="z-10"
+                          >
+                            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                              <div className="p-3 bg-accent rounded-full text-accent-foreground transition-all duration-200">
+                                <ExternalLink className="w-5 h-5" />
+                              </div>
+                            </motion.div>
+                          </Link>
                         </div>
                       </div>
+                    </Link>
 
-                      {/* Card Content */}
+                    {/* Card Content */}
+                    <Link href={`/projects/${project.slug}`}>
                       <div className="p-3 sm:p-4 lg:p-5 pb-1 sm:pb-2">
                         <h3 className="text-white text-base sm:text-lg font-semibold group-hover:text-purple-400 transition-colors duration-200 mb-2 purple-neon-text leading-tight">
                           {project.title}
@@ -204,6 +214,7 @@ export default function PortfolioGrid() {
                           <div><span className="font-semibold text-purple-300">Impact:</span> {story.impact}</div>
                         </div>
                       </div>
+                    </Link>
 
                       {/* Floating Tech Icons in Card */}
                       {performanceTier !== 'low' && !reducedMotion && (
@@ -212,10 +223,9 @@ export default function PortfolioGrid() {
                         </div>
                       )}
 
-                      {/* Bottom Border Accent */}
-                      <div className="h-1 bg-gradient-purple-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </GlassCard>
-                  </Link>
+                    {/* Bottom Border Accent */}
+                    <div className="h-1 bg-gradient-purple-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </GlassCard>
                 </motion.div>
               )
             })}
@@ -228,17 +238,6 @@ export default function PortfolioGrid() {
             <FloatingTechIcons count={4} size="xs" animated={true} />
           </div>
         )}
-
-        {/* View More Button */}
-        <AnimatedSection delay={0.4} className="text-center margin-responsive relative z-10">
-          <ViewProjectsButton
-            size="md"
-            animated={!reducedMotion}
-          >
-            View All Projects
-            <ExternalLink className="ml-2 w-4 h-4" />
-          </ViewProjectsButton>
-        </AnimatedSection>
       </div>
     </section>
   )
