@@ -1,14 +1,14 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://invoiceflowme.vercel.app'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rajeshshrirao.vercel.app'
   
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/studio/', '/api/'],
+        disallow: ['/studio/', '/api/', '/temp-output.json'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

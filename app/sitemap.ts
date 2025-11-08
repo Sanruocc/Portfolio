@@ -1,18 +1,21 @@
 import { MetadataRoute } from 'next'
 import { sanityFetch } from '@/lib/sanity.client'
-import { blogPostsQuery, projectsQuery } from '@/lib/sanity.queries'
+import { blogPostsQuery } from '@/lib/sanity.queries'
 
 interface BlogPost {
   slug: { current: string }
   publishedAt: string
 }
 
-interface Project {
-  slug: { current: string }
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://invoiceflowme.vercel.app'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rajeshshrirao.vercel.app'
+
+  // 3 Flagship Web Development Projects
+  const flagshipProjects = [
+    'invoiceflowme-invoicing-payments',
+    'shoply-ecommerce-store',
+    'ai-guru-support-bot'
+  ]
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -35,11 +38,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
+  // Flagship project pages
+  const projectPages: MetadataRoute.Sitemap = flagshipProjects.map((slug) => ({
+    url: `${baseUrl}/projects/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }))
+
   try {
-    const [blogPosts, projects] = await Promise.all([
-      sanityFetch<BlogPost[]>({ query: blogPostsQuery }),
-      sanityFetch<Project[]>({ query: projectsQuery }),
-    ])
+    const blogPosts = await sanityFetch<BlogPost[]>({ query: blogPostsQuery })
 
     const blogPages: MetadataRoute.Sitemap = (blogPosts || []).map((post) => ({
       url: `${baseUrl}/blog/${post.slug.current}`,
@@ -48,16 +56,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     }))
 
-    const projectPages: MetadataRoute.Sitemap = (projects || []).map((project) => ({
-      url: `${baseUrl}/projects/${project.slug.current}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    }))
-
-    return [...staticPages, ...blogPages, ...projectPages]
+    return [...staticPages, ...projectPages, ...blogPages]
   } catch (error) {
     console.error('Error generating sitemap:', error)
-    return staticPages
+    return [...staticPages, ...projectPages]
   }
 }

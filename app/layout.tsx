@@ -7,14 +7,38 @@ import PageTransition from "../components/page-transition"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Rajesh Shrirao - Full-Stack Developer Specializing in Next.js, Flutter & AI Agents",
-  description: "Portfolio of Rajesh Shrirao - Developer specializing in Next.js, Flutter & AI Agents, building powerful web/mobile solutions and smart agents for modern businesses",
+  title: "Rajesh Shrirao - Full-Stack Web Developer | Next.js, React & AI Solutions",
+  description: "Portfolio showcasing 3 flagship web development projects: InvoiceFlowMe (SaaS), Shoply (E-Commerce), and AI Guru (AI Support Bot). Specializing in Next.js, React, and modern web applications.",
+  keywords: ["Next.js developer", "Full-Stack Developer", "React", "Web Development", "SaaS", "E-Commerce", "AI Integration", "Stripe", "MongoDB", "TypeScript"],
+  authors: [{ name: "Rajesh Shrirao" }],
+  creator: "Rajesh Shrirao",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://rajeshshrirao.vercel.app'),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    title: "Rajesh Shrirao - Full-Stack Web Developer",
+    description: "Portfolio showcasing 3 flagship web development projects: SaaS, E-Commerce, and AI solutions",
+    siteName: "Rajesh Shrirao Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rajesh Shrirao - Full-Stack Web Developer",
+    description: "Portfolio showcasing 3 flagship web development projects",
+  },
   icons: {
     icon: [{ url: "/favicon.ico" }, { url: "/icon.png", type: "image/png" }],
     apple: "/apple-icon.png",
     shortcut: "/favicon.ico",
   },
-    generator: 'v0.app'
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 }
 
 export default function RootLayout({
