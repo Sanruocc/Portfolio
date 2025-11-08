@@ -14,6 +14,7 @@ import { useDeviceCapabilities } from "@/lib/hooks/use-device-capabilities"
 export default function ProjectsPage() {
   const { performanceTier, reducedMotion } = useDeviceCapabilities()
 
+  // 3 Flagship Web Development Projects
   const projects = [
     {
       id: 1,
@@ -29,18 +30,6 @@ export default function ProjectsPage() {
     },
     {
       id: 2,
-      slug: "myfitcoach-ai-fitness",
-      title: "MyFitCoach – AI-Powered Fitness App",
-      description:
-        "Cross-platform fitness app featuring drag & drop workout builder, AI-driven diet/workout plans, trainer chat, video tutorials, and progress tracking charts.",
-      techStack: "Flutter • Next.js • TensorFlow • MongoDB",
-      image:
-        "https://videos.openai.com/vg-assets/assets%2Ftask_01jygww4h4etdaszvgwax6rgt8%2F1750766644_img_0.webp?st=2025-06-24T11%3A07%3A42Z&se=2025-06-30T12%3A07%3A42Z&sks=b&skt=2025-06-24T11%3A07%3A42Z&ske=2025-06-30T12%3A07%3A42Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=Iw5yXVs27pX7sG7NqRnAjAEoOcCFDS%2Bs3SJmPo%2FyOCo%3D&az=oaivgprodscus",
-      live: "/",
-      featured: false,
-    },
-    {
-      id: 3,
       slug: "shoply-ecommerce-store",
       title: "Shoply – Modern E-Commerce Demo Store",
       description: "Conversion-focused store with instant search, category filters, cart and wishlist, real checkout (sandbox), review/ratings, and admin panel preview.",
@@ -51,35 +40,13 @@ export default function ProjectsPage() {
       featured: true,
     },
     {
-      id: 4,
+      id: 3,
       slug: "ai-guru-support-bot",
       title: "AI Guru – Conversational Support Bot Platform",
       description: "AI-powered assistant offering tech support, instant chat, ticket system, dashboard view of logs and ticket status, and editable bot personality/FAQ.",
       techStack: "Next.js • OpenAI API • Node.js • Supabase",
       image:
         "https://videos.openai.com/vg-assets/assets%2Ftask_01jygyf350edfaajc2jy4yavk5%2F1750768423_img_0.webp?st=2025-06-24T11%3A09%3A16Z&se=2025-06-30T12%3A09%3A16Z&sks=b&skt=2025-06-24T11%3A09%3A16Z&ske=2025-06-30T12%3A09%3A16Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=v8R7bY71gJ2H%2FbLZhFEmi4xVeERDUkzkg2JfjN1DTsU%3D&az=oaivgprodscus",
-      live: "#",
-      featured: false,
-    },
-    {
-      id: 5,
-      slug: "urbannest-real-estate",
-      title: "UrbanNest – Real Estate Portal",
-      description: "Modern property search platform with map-based listings, dynamic filters, agent profiles, visit booking (calendar demo), and chat.",
-      techStack: "Next.js • Google Maps API • MongoDB • React",
-      image:
-        "https://videos.openai.com/vg-assets/assets%2Ftask_01jygxepn6fv0awcha0vzb3dcx%2F1750767317_img_0.webp?st=2025-06-24T11%3A07%3A42Z&se=2025-06-30T12%3A07%3A42Z&sks=b&skt=2025-06-24T11%3A07%3A42Z&ske=2025-06-30T12%3A07%3A42Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=TClcNbO%2FdJH%2BiaBxO%2B7PoPVTiw6H5lYA01JKLPr3D1o%3D&az=oaivgprodscus",
-      live: "#",
-      featured: false,
-    },
-    {
-      id: 6,
-      slug: "devportfolio-designer-showcase",
-      title: "DevPortfolio - Designer Showcase",
-      description: "Stunning portfolio website with smooth animations, dark mode, and responsive design system",
-      techStack: "Next.js • Framer Motion • Tailwind CSS",
-      image:
-        "https://videos.openai.com/vg-assets/assets%2Ftask_01jygxf00qe8f8qyk9qy5vyevb%2F1750767280_img_0.webp?st=2025-06-24T11%3A07%3A41Z&se=2025-06-30T12%3A07%3A41Z&sks=b&skt=2025-06-24T11%3A07%3A41Z&ske=2025-06-30T12%3A07%3A41Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=pxmu1TSNwbTaxMpqmG6ksKI2BeB0jmza6Ftw3OrJSVk%3D&az=oaivgprodscus",
       live: "#",
       featured: true,
     },
@@ -121,14 +88,14 @@ export default function ProjectsPage() {
           <div className="container-responsive">
             <AnimatedSection className="text-center margin-responsive">
               <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
-                <span className="text-purple-400 text-xs sm:text-sm font-medium">Full Portfolio</span>
+                <span className="text-purple-400 text-xs sm:text-sm font-medium">Featured Projects</span>
               </div>
 
               <h1 className="text-responsive-title font-bold text-foreground mb-4 sm:mb-6 purple-neon-text leading-tight">
-                All <span className="text-primary">Projects</span>
+                3 Flagship <span className="text-primary">Web Applications</span>
               </h1>
               <p className="text-responsive-body text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                A comprehensive showcase of my development work across web, mobile, and design projects
+                Showcasing expertise in SaaS platforms, e-commerce solutions, and AI-powered applications
               </p>
             </AnimatedSection>
           </div>
