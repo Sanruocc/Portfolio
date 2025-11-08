@@ -1,12 +1,15 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, ExternalLink, Calendar, Users, Target } from "lucide-react"
+import { GlassCard } from "@/components/ui/glass-morphism"
+import { TechBadge, FeaturedBadge } from "@/components/ui/premium-badge"
+import { ArrowLeft, ExternalLink, Calendar, Users, Target, CheckCircle2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import Navigation from "@/components/navigation"
+import Footer from "@/components/footer"
+import AnimatedSection from "@/components/animated-section"
 
 const projectsData = {
   "invoiceflowme-invoicing-payments": {
@@ -187,212 +190,228 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Premium Background Effects - Same as Main Page */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-900/5 via-transparent to-yellow-900/5"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-premium-breathe"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl animate-premium-breathe" style={{ animationDelay: '2s' }}></div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-md border-b border-gray-800 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <Link href="/" className="text-2xl font-bold text-orange-500">
-              {"<Rajesh />"}
-            </Link>
-            <Link href="/" className="flex items-center text-gray-300 hover:text-orange-500 transition-colors">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Portfolio
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
-      <main className="pt-20">
+      <main className="relative z-10 pt-20">
+        {/* Back Button */}
+        <AnimatedSection className="container-responsive py-6">
+          <Link 
+            href="/" 
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Portfolio
+          </Link>
+        </AnimatedSection>
+
         {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-12"
-            >
-              <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                {project.title.split(" - ")[0]}
-                <span className="text-orange-500 block text-2xl md:text-3xl mt-2">{project.title.split(" - ")[1]}</span>
-              </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">{project.description}</p>
+        <section className="section-padding">
+          <div className="container-responsive">
+            <AnimatedSection className="text-center space-y-6 mb-12">
+              {/* Title */}
+              <div className="space-y-4">
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 mb-4">
+                  <span className="text-purple-400 text-xs sm:text-sm font-medium">{project.subtitle}</span>
+                </div>
+                <h1 className="text-responsive-title font-bold text-foreground purple-neon-text leading-tight">
+                  {project.title}
+                </h1>
+                <p className="text-responsive-body text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
 
-              <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {/* Tech Stack */}
+              <div className="flex flex-wrap justify-center gap-2">
                 {project.techStack.map((tech, index) => (
-                  <Badge key={index} className="bg-orange-500/10 text-orange-500 border-orange-500/20">
+                  <TechBadge key={index} size="sm" className="text-xs">
                     {tech}
-                  </Badge>
+                  </TechBadge>
                 ))}
               </div>
 
-              <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-orange-500 hover:bg-orange-600 text-black font-semibold">
-                  View Live Project
-                  <ExternalLink className="ml-2 w-4 h-4" />
-                </Button>
+              {/* CTA Button */}
+              <Link
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg shadow-purple-500/30"
+              >
+                View Live Project
+                <ExternalLink className="w-4 h-4" />
               </Link>
-            </motion.div>
+            </AnimatedSection>
 
             {/* Project Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-16"
-            >
-              <Image
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                width={1200}
-                height={600}
-                className="w-full rounded-lg shadow-2xl"
-              />
-            </motion.div>
+            <AnimatedSection delay={0.2} className="mb-16">
+              <GlassCard className="overflow-hidden" intensity="medium" glow={true}>
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  width={1200}
+                  height={600}
+                  className="w-full rounded-lg"
+                />
+              </GlassCard>
+            </AnimatedSection>
           </div>
         </section>
 
         {/* Project Details */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              {/* Project Info */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="lg:col-span-1"
-              >
-                <div className="space-y-6">
-                  <div className="bg-gray-800/50 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold mb-4 text-orange-500">Project Info</h3>
-                    <div className="space-y-3">
-                      <div className="flex items-center">
-                        <Calendar className="w-5 h-5 text-gray-400 mr-3" />
-                        <span className="text-gray-300">{project.duration}</span>
+        <section className="section-padding bg-gradient-to-b from-transparent via-purple-900/5 to-transparent">
+          <div className="container-responsive">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Sidebar - Project Info */}
+              <AnimatedSection delay={0.3} className="lg:col-span-1 space-y-6">
+                <GlassCard intensity="medium" className="p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-4 purple-neon-text">Project Info</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <Calendar className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-xs text-muted-foreground">Duration</p>
+                        <p className="text-sm text-foreground">{project.duration}</p>
                       </div>
-                      <div className="flex items-center">
-                        <Users className="w-5 h-5 text-gray-400 mr-3" />
-                        <span className="text-gray-300">{project.team}</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Users className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-xs text-muted-foreground">Team</p>
+                        <p className="text-sm text-foreground">{project.team}</p>
                       </div>
-                      <div className="flex items-center">
-                        <Target className="w-5 h-5 text-gray-400 mr-3" />
-                        <span className="text-gray-300">{project.role}</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <Target className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-xs text-muted-foreground">Role</p>
+                        <p className="text-sm text-foreground">{project.role}</p>
                       </div>
                     </div>
                   </div>
+                </GlassCard>
+              </AnimatedSection>
+
+              {/* Main Content */}
+              <AnimatedSection delay={0.4} className="lg:col-span-2 space-y-8">
+                {/* Overview */}
+                <div>
+                  <h2 className="text-2xl font-bold text-foreground mb-4 purple-neon-text">Project Overview</h2>
+                  <p className="text-muted-foreground leading-relaxed">{project.overview}</p>
                 </div>
-              </motion.div>
 
-              {/* Project Overview */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="lg:col-span-2"
-              >
-                <h2 className="text-3xl font-bold mb-6">Project Overview</h2>
-                <p className="text-gray-300 text-lg leading-relaxed mb-8">{project.overview}</p>
-
-                <h3 className="text-2xl font-semibold mb-4 text-orange-500">Key Features</h3>
-                <ul className="space-y-3 mb-8">
-                  {project.features.map((feature, index) => (
-                    <li key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0" />
-                      <span className="text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+                {/* Key Features */}
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-4 text-purple-400">Key Features</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {project.features.map((feature, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/10">
+                        <CheckCircle2 className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </AnimatedSection>
             </div>
           </div>
         </section>
 
         {/* Development Process */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <h2 className="text-3xl font-bold mb-12 text-center">Development Process</h2>
+        <section className="section-padding">
+          <div className="container-responsive">
+            <AnimatedSection delay={0.5} className="text-center mb-12">
+              <h2 className="text-2xl font-bold text-foreground purple-neon-text">Development Process</h2>
+            </AnimatedSection>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {Object.entries(project.development).map(([phase, description], index) => (
-                  <div key={phase} className="bg-gray-800/30 p-6 rounded-lg">
-                    <h3 className="text-xl font-semibold mb-3 text-orange-500 capitalize">{phase}</h3>
-                    <p className="text-gray-300 leading-relaxed">{description}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Object.entries(project.development).map(([phase, description], index) => (
+                <AnimatedSection key={phase} delay={0.6 + index * 0.1}>
+                  <GlassCard className="p-6 h-full" intensity="low" hover={true}>
+                    <h3 className="text-lg font-bold text-purple-400 mb-3 capitalize">{phase}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+                  </GlassCard>
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Challenges & Solutions */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold mb-12 text-center">Challenges & Solutions</h2>
+        <section className="section-padding bg-gradient-to-b from-transparent via-purple-900/5 to-transparent">
+          <div className="container-responsive">
+            <AnimatedSection delay={0.7} className="text-center mb-12">
+              <h2 className="text-2xl font-bold text-foreground purple-neon-text">Challenges & Solutions</h2>
+            </AnimatedSection>
 
-              <div className="space-y-8">
-                {project.challenges.map((challenge, index) => (
-                  <div key={index} className="bg-gray-800/50 p-8 rounded-lg">
+            <div className="space-y-6">
+              {project.challenges.map((challenge, index) => (
+                <AnimatedSection key={index} delay={0.8 + index * 0.1}>
+                  <GlassCard className="p-8" intensity="medium">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                       <div>
-                        <h3 className="text-xl font-semibold mb-3 text-red-400">Challenge</h3>
-                        <p className="text-gray-300 leading-relaxed">{challenge.problem}</p>
+                        <h3 className="text-lg font-bold text-red-400 mb-3 flex items-center gap-2">
+                          <span className="text-2xl">⚠️</span>
+                          Challenge
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed">{challenge.problem}</p>
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold mb-3 text-green-400">Solution</h3>
-                        <p className="text-gray-300 leading-relaxed">{challenge.solution}</p>
+                        <h3 className="text-lg font-bold text-green-400 mb-3 flex items-center gap-2">
+                          <span className="text-2xl">✅</span>
+                          Solution
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed">{challenge.solution}</p>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+                  </GlassCard>
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-            >
-              <h2 className="text-3xl font-bold mb-6">Interested in Similar Work?</h2>
-              <p className="text-xl text-gray-300 mb-8">
-                Let's discuss how I can help bring your project ideas to life with the same attention to detail and
-                technical expertise.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="mailto:rajeshshrirao696@gmail.com">
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-black font-semibold">
+        <section className="section-padding">
+          <div className="container-responsive">
+            <AnimatedSection delay={0.9}>
+              <GlassCard className="p-12 text-center" intensity="medium" glow={true}>
+                <h2 className="text-2xl font-bold text-foreground mb-4 purple-neon-text">
+                  Interested in Similar Work?
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                  Let's discuss how I can help bring your project ideas to life with the same attention to detail and
+                  technical expertise.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link 
+                    href="mailto:rajeshshrirao696@gmail.com"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-200 shadow-lg shadow-purple-500/30"
+                  >
                     Get In Touch
-                  </Button>
-                </Link>
-                <Link href="/">
-                  <Button
-                    variant="outline"
-                    className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black"
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-purple-500 text-purple-400 font-semibold rounded-lg hover:bg-purple-500/10 transition-all duration-200"
                   >
                     View More Projects
-                  </Button>
-                </Link>
-              </div>
-            </motion.div>
+                  </Link>
+                </div>
+              </GlassCard>
+            </AnimatedSection>
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   )
 }
