@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GeometricPortrait } from '@/components/ui/geometric-portrait';
+import { ProfilePortrait } from '@/components/ui/profile-portrait';
 import { 
   NextJsIcon, 
   ReactIcon, 
@@ -180,7 +180,7 @@ export function AboutSection() {
             className="flex items-center justify-center lg:justify-start"
           >
             <div className="group relative">
-              <GeometricPortrait />
+              <ProfilePortrait />
             </div>
           </motion.div>
 
