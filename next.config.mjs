@@ -1,24 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  reactStrictMode: true,
   images: {
-    unoptimized: false,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
-      {
-        protocol: 'https',
-        hostname: 'videos.openai.com',
-      },
-    ],
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [{ protocol: 'https', hostname: '**' }],
   },
-}
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
+};
 
-export default nextConfig
+export default nextConfig;
