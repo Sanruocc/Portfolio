@@ -5,8 +5,14 @@ import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 
-// Initialize Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend only if API key is available
+function getResendClient() {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('RESEND_API_KEY not configured - emails will be logged only');
+    return null;
+  }
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 // Rate limiting storage (in-memory for simplicity)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
@@ -179,108 +185,117 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
     });
 
-    // Send email to business owner
-    const emailResult = await resend.emails.send({
-      from: process.env.FROM_EMAIL || 'Portfolio <onboarding@resend.dev>',
-      to: process.env.CONTACT_EMAIL || 'hello@example.com',
-      subject: `New Project Inquiry from ${sanitizedData.name}`,
-      html: `
-        <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1a1a24; margin-bottom: 20px;">New Project Inquiry</h2>
-          
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Name:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">${sanitizedData.name}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Email:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">
-                <a href="mailto:${sanitizedData.email}" style="color: #6366f1; text-decoration: none;">${sanitizedData.email}</a>
-              </td>
-            </tr>
-            ${sanitizedData.phone ? `
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Phone:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">
-                <a href="tel:${sanitizedData.phone}" style="color: #6366f1; text-decoration: none;">${sanitizedData.phone}</a>
-              </td>
-            </tr>
-            ` : ''}
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Project Type:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">${sanitizedData.projectType}</td>
-            </tr>
-            ${sanitizedData.budget ? `
-            <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Budget:</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">${sanitizedData.budget}</td>
-            </tr>
-            ` : ''}
-            <tr>
-              <td style="padding: 10px 0; font-weight: 600; color: #1a1a24;">Message:</td>
-              <td style="padding: 10px 0; color: #333; white-space: pre-wrap;">${sanitizedData.message}</td>
-            </tr>
-          </table>
-          
-          <p style="margin-top: 30px; color: #666; font-size: 14px;">
-            Submitted at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
-          </p>
-        </div>
-      `,
-      replyTo: sanitizedData.email,
-    });
+    // Send email to business owner (only if API key is configured)
+    const resend = getResendClient();
+    if (resend) {
+      const emailResult = await resend.emails.send({
+        from: process.env.FROM_EMAIL || 'Portfolio <onboarding@resend.dev>',
+        to: process.env.CONTACT_EMAIL || 'hello@example.com',
+        subject: `New Project Inquiry from ${sanitizedData.name}`,
+        html: `
+          <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #1a1a24; margin-bottom: 20px;">New Project Inquiry</h2>
+            
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Name:</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">${sanitizedData.name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Email:</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">
+                  <a href="mailto:${sanitizedData.email}" style="color: #6366f1; text-decoration: none;">${sanitizedData.email}</a>
+                </td>
+              </tr>
+              ${sanitizedData.phone ? `
+              <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Phone:</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">
+                  <a href="tel:${sanitizedData.phone}" style="color: #6366f1; text-decoration: none;">${sanitizedData.phone}</a>
+                </td>
+              </tr>
+              ` : ''}
+              <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Project Type:</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">${sanitizedData.projectType}</td>
+              </tr>
+              ${sanitizedData.budget ? `
+              <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1a1a24;">Budget:</td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #333;">${sanitizedData.budget}</td>
+              </tr>
+              ` : ''}
+              <tr>
+                <td style="padding: 10px 0; font-weight: 600; color: #1a1a24;">Message:</td>
+                <td style="padding: 10px 0; color: #333; white-space: pre-wrap;">${sanitizedData.message}</td>
+              </tr>
+            </table>
+            
+            <p style="margin-top: 30px; color: #666; font-size: 14px;">
+              Submitted at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+            </p>
+          </div>
+        `,
+        replyTo: sanitizedData.email,
+      });
 
-    if (emailResult.error) {
-      console.error('Email send error:', emailResult.error);
-      return NextResponse.json(
-        { success: false, error: 'Failed to send email. Please try again later.' },
-        { status: 500 }
-      );
+      if (emailResult.error) {
+        console.error('Email send error:', emailResult.error);
+        return NextResponse.json(
+          { success: false, error: 'Failed to send email. Please try again later.' },
+          { status: 500 }
+        );
+      }
+    } else {
+      console.log('Email not sent - API key not configured. Form data:', sanitizedData);
     }
 
-    // Send confirmation email to user
-    await resend.emails.send({
-      from: process.env.FROM_EMAIL || 'Portfolio <onboarding@resend.dev>',
-      to: sanitizedData.email,
-      subject: 'Thank you for your inquiry - Rajesh Shrirao',
-      html: `
-        <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1a1a24; margin-bottom: 20px;">Thank you for reaching out!</h2>
-          
-          <p style="color: #333; line-height: 1.6; margin-bottom: 20px;">
-            Hi ${sanitizedData.name},
-          </p>
-          
-          <p style="color: #333; line-height: 1.6; margin-bottom: 20px;">
-            Thank you for your interest in working together. I've received your message and will get back to you within 24 hours.
-          </p>
-          
-          <p style="color: #333; line-height: 1.6; margin-bottom: 20px;">
-            In the meantime, feel free to message me directly on WhatsApp for faster response:
-          </p>
-          
-          <p style="color: #333; line-height: 1.6; margin-bottom: 30px;">
-            <strong>Project Type:</strong> ${sanitizedData.projectType}<br>
-            ${sanitizedData.budget ? `<strong>Budget:</strong> ${sanitizedData.budget}<br>` : ''}
-            <strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
-          </p>
-          
-          <div style="text-align: center; margin: 30px 0;">
-            <a href="https://wa.me/919876543210?text=Hi Rajesh, I'd like to discuss a project" 
-               style="display: inline-block; background: #10B981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
-              Chat on WhatsApp
-            </a>
+    // Send confirmation email to user (only if API key is configured)
+    if (resend) {
+      await resend.emails.send({
+        from: process.env.FROM_EMAIL || 'Portfolio <onboarding@resend.dev>',
+        to: sanitizedData.email,
+        subject: 'Thank you for your inquiry - Rajesh Shrirao',
+        html: `
+          <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #1a1a24; margin-bottom: 20px;">Thank you for reaching out!</h2>
+            
+            <p style="color: #333; line-height: 1.6; margin-bottom: 20px;">
+              Hi ${sanitizedData.name},
+            </p>
+            
+            <p style="color: #333; line-height: 1.6; margin-bottom: 20px;">
+              Thank you for your interest in working together. I've received your message and will get back to you within 24 hours.
+            </p>
+            
+            <p style="color: #333; line-height: 1.6; margin-bottom: 20px;">
+              In the meantime, feel free to message me directly on WhatsApp for faster response:
+            </p>
+            
+            <p style="color: #333; line-height: 1.6; margin-bottom: 30px;">
+              <strong>Project Type:</strong> ${sanitizedData.projectType}<br>
+              ${sanitizedData.budget ? `<strong>Budget:</strong> ${sanitizedData.budget}<br>` : ''}
+              <strong>Submitted:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}
+            </p>
+            
+            <div style="text-align: center; margin: 30px 0;">
+              <a href="https://wa.me/919876543210?text=Hi Rajesh, I'd like to discuss a project" 
+                 style="display: inline-block; background: #10B981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+                Chat on WhatsApp
+              </a>
+            </div>
+            
+            <p style="color: #666; font-size: 14px; margin-top: 30px;">
+              Best regards,<br>
+              Rajesh Shrirao<br>
+              Full-Stack Developer & AI Automation Builder
+            </p>
           </div>
-          
-          <p style="color: #666; font-size: 14px; margin-top: 30px;">
-            Best regards,<br>
-            Rajesh Shrirao<br>
-            Full-Stack Developer & AI Automation Builder
-          </p>
-        </div>
-      `,
-    });
+        `,
+      });
+    } else {
+      console.log('Confirmation email not sent - API key not configured for user:', sanitizedData.email);
+    }
 
     return NextResponse.json({
       success: true,
