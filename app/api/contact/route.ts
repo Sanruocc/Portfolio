@@ -190,7 +190,7 @@ export async function POST(request: NextRequest) {
     if (resend) {
       const emailResult = await resend.emails.send({
         from: process.env.FROM_EMAIL || 'Portfolio <onboarding@resend.dev>',
-        to: process.env.CONTACT_EMAIL || 'hello@example.com',
+        to: process.env.CONTACT_EMAIL || 'rajeshshrirao696@gmail.com',
         subject: `New Project Inquiry from ${sanitizedData.name}`,
         html: `
           <div style="font-family: system-ui, -apple-system, sans-serif; max-width: 600px; margin: 0 auto;">
