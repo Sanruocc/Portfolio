@@ -53,7 +53,7 @@ export function HeroSection() {
           </div>
 
           <h1 className="mt-8 text-2xl md:text-2xl">
-            Welcome to my creative playground! I'm{" "}
+            Welcome to my creative playground! I&apos;m{" "}
             <span className="text-ali font-bold">Rajesh Shrirao</span>
           </h1>
 

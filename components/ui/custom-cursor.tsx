@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export function CustomCursor() {
@@ -20,6 +20,19 @@ export function CustomCursor() {
   // Trail effect
   const trailRef = useRef<(HTMLDivElement | null)[]>([]);
   const trailPositions = useRef<Array<{ x: number; y: number }>>([]);
+
+  const updateCursorSize = useCallback((type: string) => {
+    switch (type) {
+      case 'link':
+        cursorSize.set(24);
+        break;
+      case 'button':
+        cursorSize.set(32);
+        break;
+      default:
+        cursorSize.set(8);
+    }
+  }, [cursorSize]);
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
@@ -97,20 +110,7 @@ export function CustomCursor() {
         button.removeEventListener('mouseleave', handleButtonLeave);
       });
     };
-  }, [cursorX, cursorY, cursorSize, isVisible, cursorType]);
-
-  const updateCursorSize = (type: string) => {
-    switch (type) {
-      case 'link':
-        cursorSize.set(24);
-        break;
-      case 'button':
-        cursorSize.set(32);
-        break;
-      default:
-        cursorSize.set(8);
-    }
-  };
+  }, [cursorX, cursorY, cursorSize, isVisible, cursorType, updateCursorSize]);
 
   // Don't show on touch devices
   if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {

@@ -120,6 +120,8 @@ export function useElementVisibility(ref: React.RefObject<HTMLElement>, threshol
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const element = ref.current;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -127,13 +129,13 @@ export function useElementVisibility(ref: React.RefObject<HTMLElement>, threshol
       { threshold }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, [ref, threshold]);

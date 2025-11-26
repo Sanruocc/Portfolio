@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface ParallaxProps {
@@ -11,43 +11,38 @@ interface ParallaxProps {
   disabledOnMobile?: boolean;
 }
 
-export function Parallax({ 
-  children, 
-  className = '', 
+export function Parallax({
+  children,
+  className = '',
   speed = 0.5,
   direction = 'up',
   disabledOnMobile = true
 }: ParallaxProps) {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start']
   });
 
-  // Check if on mobile
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  
+  // All hooks must be called unconditionally at the top level
+  const yTransform = useTransform(scrollYProgress, [0, 1], [0, -100 * speed]);
+  const yTransformDown = useTransform(scrollYProgress, [0, 1], [0, 100 * speed]);
+  const xTransformLeft = useTransform(scrollYProgress, [0, 1], [0, -100 * speed]);
+  const xTransformRight = useTransform(scrollYProgress, [0, 1], [0, 100 * speed]);
+
+  const y = direction === 'up' ? yTransform : direction === 'down' ? yTransformDown : 0;
+  const x = direction === 'left' ? xTransformLeft : direction === 'right' ? xTransformRight : 0;
+
   // Disable parallax on mobile if specified
   if (disabledOnMobile && isMobile) {
     return <div className={className}>{children}</div>;
   }
-
-  // Calculate transform based on direction
-  const getTransform = () => {
-    switch (direction) {
-      case 'down':
-        return useTransform(scrollYProgress, [0, 1], [0, 100 * speed]);
-      case 'left':
-        return useTransform(scrollYProgress, [0, 1], [0, -100 * speed]);
-      case 'right':
-        return useTransform(scrollYProgress, [0, 1], [0, 100 * speed]);
-      default:
-        return useTransform(scrollYProgress, [0, 1], [0, -100 * speed]);
-    }
-  };
-
-  const y = direction === 'up' || direction === 'down' ? getTransform() : 0;
-  const x = direction === 'left' || direction === 'right' ? getTransform() : 0;
 
   return (
     <motion.div
@@ -77,18 +72,22 @@ export function ParallaxBackground({
   speed = 0.3 
 }: ParallaxBackgroundProps) {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start']
   });
-
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50 * speed]);
   
   if (isMobile) {
     return <div className={className}>{children}</div>;
   }
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50 * speed]);
 
   return (
     <motion.div
@@ -112,6 +111,39 @@ interface StaggeredParallaxProps {
   staggerDelay?: number;
 }
 
+// Individual child component to use hooks properly
+function StaggeredParallaxChild({ 
+  child, 
+  index, 
+  scrollYProgress, 
+  speed, 
+  staggerDelay 
+}: { 
+  child: ReactNode; 
+  index: number; 
+  scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress']; 
+  speed: number; 
+  staggerDelay: number;
+}) {
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -100 * speed * (index + 1) * 0.5]
+  );
+
+  return (
+    <motion.div
+      style={{
+        y,
+        willChange: 'transform'
+      }}
+      transition={{ delay: index * staggerDelay }}
+    >
+      {child}
+    </motion.div>
+  );
+}
+
 export function StaggeredParallax({ 
   children, 
   className = '',
@@ -119,12 +151,16 @@ export function StaggeredParallax({
   staggerDelay = 0.1
 }: StaggeredParallaxProps) {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start']
   });
-
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   
   if (isMobile) {
     return <div className={className}>{children}</div>;
@@ -132,26 +168,16 @@ export function StaggeredParallax({
 
   return (
     <div ref={ref} className={className}>
-      {children.map((child, index) => {
-        const y = useTransform(
-          scrollYProgress,
-          [0, 1],
-          [0, -100 * speed * (index + 1) * 0.5]
-        );
-
-        return (
-          <motion.div
-            key={index}
-            style={{
-              y,
-              willChange: 'transform'
-            }}
-            transition={{ delay: index * staggerDelay }}
-          >
-            {child}
-          </motion.div>
-        );
-      })}
+      {children.map((child, index) => (
+        <StaggeredParallaxChild
+          key={index}
+          child={child}
+          index={index}
+          scrollYProgress={scrollYProgress}
+          speed={speed}
+          staggerDelay={staggerDelay}
+        />
+      ))}
     </div>
   );
 }

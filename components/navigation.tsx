@@ -131,7 +131,7 @@ export function Navigation() {
               className='group flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-foreground border border-white/15 rounded-full bg-white/2 hover:bg-accent hover:border-accent hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background'
               aria-label='Contact via WhatsApp'
             >
-              <span>Let's Talk</span>
+              <span>Let&apos;s Talk</span>
               <WhatsAppIcon className='w-4 h-4 text-green-500 group-hover:scale-110 transition-transform duration-300' />
             </a>
           </div>
@@ -238,7 +238,7 @@ export function Navigation() {
                     className='flex items-center justify-center gap-3 w-full bg-gradient-to-r from-accent to-accent/80 text-white font-medium py-4 px-6 rounded-xl hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background'
                     onClick={() => setIsOpen(false)}
                   >
-                    Let's Talk
+                    Let&apos;s Talk
                     <WhatsAppIcon className='w-5 h-5' />
                   </a>
                 </motion.div>

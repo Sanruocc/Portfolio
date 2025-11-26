@@ -225,7 +225,7 @@ export function ProjectsShowcase() {
             Want to work together?
           </h3>
           <p className="mb-8 text-muted-foreground">
-            Let's build something amazing for your business
+            Let&apos;s build something amazing for your business
           </p>
           <MagneticContainer strength={0.2}>
             <a

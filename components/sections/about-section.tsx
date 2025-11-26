@@ -143,7 +143,7 @@ const approachPoints = [
   {
     icon: QualityIcon,
     title: 'Premium quality',
-    description: 'Charge what you\'re worth',
+    description: "Charge what you're worth",
   },
   {
     icon: ResultsIcon,
@@ -207,13 +207,13 @@ export function AboutSection() {
               
               <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                 <p>
-                  I'm a freelance developer building premium web experiences for service businesses across India — from Pune to Mumbai and beyond. I specialize in creating SaaS-style websites that don't just look good, but actually convert visitors into customers.
+                  I&apos;m a freelance developer building premium web experiences for service businesses across India — from Pune to Mumbai and beyond. I specialize in creating SaaS-style websites that don&apos;t just look good, but actually convert visitors into customers.
                 </p>
                 <p>
-                  Born in Surat, based in Pune, I'm growing a web design agency focused on helping doctors, dentists, and professional service providers stand out online. My approach combines clean design, strategic thinking, and modern tech to build websites that work as hard as you do.
+                  Born in Surat, based in Pune, I&apos;m growing a web design agency focused on helping doctors, dentists, and professional service providers stand out online. My approach combines clean design, strategic thinking, and modern tech to build websites that work as hard as you do.
                 </p>
                 <p>
-                  Beyond client work, I'm building AI-powered tools and digital products to help businesses automate workflows and scale without burning out. Long-term vision: build a semi-automated company where AI handles the repetitive stuff, so I can focus on strategy and creative problem-solving.
+                  Beyond client work, I&apos;m building AI-powered tools and digital products to help businesses automate workflows and scale without burning out. Long-term vision: build a semi-automated company where AI handles the repetitive stuff, so I can focus on strategy and creative problem-solving.
                 </p>
               </div>
             </motion.div>
@@ -250,7 +250,7 @@ export function AboutSection() {
             {/* Section 3: Current Focus */}
             <motion.div variants={sectionVariants}>
               <h3 className="mb-6 font-heading text-2xl font-bold text-foreground sm:text-3xl">
-                What I'm Building Now
+                What I&apos;m Building Now
               </h3>
               
               <div className="grid gap-4 sm:grid-cols-3">

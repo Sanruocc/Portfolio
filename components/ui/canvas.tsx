@@ -22,11 +22,13 @@ interface Config {
   tension: number;
 }
 
-// @ts-ignore - Legacy JavaScript code
-function n(e: any) {
-  // @ts-ignore
-  this.init(e || {});
+interface NConstructor {
+  new (e?: any): any;
 }
+
+const n = function (this: any, e: any) {
+  this.init(e || {});
+} as unknown as NConstructor;
 n.prototype = {
   // @ts-ignore
   init: function (e: any) {
@@ -52,11 +54,13 @@ n.prototype = {
   },
 };
 
-// @ts-ignore - Legacy JavaScript code
-function Line(e: any) {
-  // @ts-ignore
-  this.init(e || {});
+interface LineConstructor {
+  new (e?: any): any;
 }
+
+const Line = function (this: any, e: any) {
+  this.init(e || {});
+} as unknown as LineConstructor;
 
 Line.prototype = {
   // @ts-ignore
@@ -232,12 +236,16 @@ var ctx: CanvasRenderingContext2D & { running?: boolean; frame?: number },
     tension: 0.99,
   };
 
-function Node(this: AnimationNode) {
+interface NodeConstructor {
+  new (): AnimationNode;
+}
+
+const Node = function (this: AnimationNode) {
   this.x = 0;
   this.y = 0;
   this.vy = 0;
   this.vx = 0;
-}
+} as unknown as NodeConstructor;
 
 export const renderCanvas = function () {
   // @ts-ignore

@@ -164,7 +164,7 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
             Message Sent!
           </h3>
           <p className="text-muted-foreground">
-            Thanks! I'll get back to you within 24 hours.
+            Thanks! I&apos;ll get back to you within 24 hours.
           </p>
         </div>
 
@@ -195,10 +195,10 @@ export function ContactForm({ onSuccess }: ContactFormProps) {
         >
           <div className="mb-8">
             <h2 className="mb-3 font-heading text-3xl font-bold text-foreground sm:text-4xl">
-              Let's Build Something Great
+              Let&apos;s Build Something Great
             </h2>
             <p className="text-lg text-muted-foreground">
-              Have a project in mind? Let's talk about how I can help your business grow.
+              Have a project in mind? Let&apos;s talk about how I can help your business grow.
             </p>
           </div>
 
