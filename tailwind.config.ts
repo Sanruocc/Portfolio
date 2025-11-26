@@ -31,7 +31,8 @@ const config: Config = {
         ring: 'hsl(var(--ring))',
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-space)', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],
       },
       animation: {
