@@ -14,6 +14,10 @@ const navItems = [
   { href: '#contact', label: 'Contact' },
 ];
 
+const serviceItems = [
+  { href: '/figma-to-nextjs', label: 'Figma → Next.js' },
+];
+
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -120,6 +124,20 @@ export function Navigation() {
                 )}
               </Link>
             ))}
+            
+            {/* Service CTA */}
+            <div className='border-l border-white/10 pl-6'>
+              <Link
+                href={serviceItems[0].href}
+                className='group relative px-4 py-2 text-sm font-semibold bg-gradient-to-r from-purple-600 to-orange-500 text-white rounded-full hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 focus:ring-offset-background'
+              >
+                <span className='relative z-10 flex items-center gap-2'>
+                  <span>{serviceItems[0].label}</span>
+                  <ArrowRightIcon className='w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-300' />
+                </span>
+                <div className='absolute inset-0 bg-gradient-to-r from-purple-700 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full' />
+              </Link>
+            </div>
           </nav>
 
           {/* CTA Button */}
@@ -223,6 +241,29 @@ export function Navigation() {
                       </Link>
                     </motion.div>
                   ))}
+                  
+                  {/* Service CTA - Mobile */}
+                  <motion.div
+                    initial={{ x: 60, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.1 + navItems.length * 0.05,
+                      type: 'spring',
+                      stiffness: 300,
+                      damping: 20
+                    }}
+                  >
+                    <Link
+                      href={serviceItems[0].href}
+                      className='flex items-center justify-between px-4 py-3 text-lg font-semibold bg-gradient-to-r from-purple-600 to-orange-500 text-white rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 focus:ring-offset-background'
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <span className='flex items-center gap-2'>
+                        <span>{serviceItems[0].label}</span>
+                      </span>
+                      <ArrowRightIcon className='w-4 h-4 opacity-80' />
+                    </Link>
+                  </motion.div>
                 </nav>
 
                 <motion.div
