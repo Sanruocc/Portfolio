@@ -106,17 +106,17 @@ export function FigmaFAQSection() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative overflow-hidden rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 hover:border-purple-500/30 transition-all duration-300"
+              className="group relative overflow-hidden rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full p-6 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-purple-500/20 rounded-2xl"
+                className="w-full p-4 sm:p-6 text-left flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-purple-500/20 rounded-xl"
               >
-                <div className="flex items-start gap-4 flex-1">
-                  <div className="flex-shrink-0 mt-1">
-                    <HelpCircle className="h-5 w-5 text-purple-600" />
+                <div className="flex items-start gap-3 sm:gap-4 flex-1">
+                  <div className="flex-shrink-0 mt-0.5">
+                    <HelpCircle className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground pr-4">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-800 dark:text-gray-200 pr-2 sm:pr-4 leading-tight">
                     {faq.question}
                   </h3>
                 </div>

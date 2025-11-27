@@ -100,43 +100,36 @@ export function FigmaFinalCTASection() {
             </p>
           </motion.div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-12">
-            {/* Primary CTA - WhatsApp */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-8 sm:mb-12">
+            {/* Primary CTA - WhatsApp - Mobile Optimized */}
             <a
-              href="https://wa.me/919822379976?text=Hi Rajesh, I'm ready to start my Figma to Next.js conversion project. Please send me details about the $349 Speed-Launch Package."
+              href="https://wa.me/919822379976?text=Hi Rajesh, I'm ready to start my Figma to Next.js conversion project. Please send me details about the $349 Speed-Launch Package and next steps."
               target="_blank"
               rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-bold rounded-full bg-gradient-to-r from-green-600 via-green-500 to-green-600 text-white shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 border-0"
             >
-              <Button 
-                size="lg" 
-                className="group relative overflow-hidden bg-gradient-to-r from-green-600 via-green-500 to-green-600 bg-[length:200%_auto] hover:animate-gradient-shift text-white px-12 py-6 text-xl font-semibold rounded-full shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-105 border-0 min-w-[280px]"
-              >
-                <span className="relative z-10 flex items-center gap-4">
-                  <MessageCircle className="h-6 w-6" />
-                  <span>Chat Now on WhatsApp</span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-green-700 via-green-600 to-green-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                {/* Sparkle effects */}
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-white/30 rounded-full animate-pulse" />
-                <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-              </Button>
+              <span className="flex items-center gap-3 sm:gap-4">
+                <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span>Start Project Now</span>
+                <div className="flex items-center gap-1 text-xs sm:text-sm font-normal opacity-90">
+                  <span className="hidden sm:inline">•</span>
+                  <span>$349</span>
+                </div>
+              </span>
+              {/* Sparkle effects */}
+              <div className="absolute -top-1 -right-1 w-2 h-2 sm:w-3 sm:h-3 bg-white/30 rounded-full animate-pulse" />
+              <div className="absolute -bottom-1 -left-1 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
             </a>
 
-            {/* Secondary CTA - Email */}
+            {/* Secondary CTA - Email - Mobile Optimized */}
             <a
-              href="mailto:rajeshshrirao696@gmail.com?subject=Ready to Start Figma to Next.js Project&body=Hi Rajesh, I'm ready to start my Figma to Next.js conversion project. Please send me details about the $349 Speed-Launch Package and how we can get started."
+              href="mailto:rajeshshrirao696@gmail.com?subject=Ready to Start Figma to Next.js Project - $349 Package&body=Hi Rajesh, I'm ready to start my Figma to Next.js conversion project. Please send me details about the $349 Speed-Launch Package, timeline, and next steps."
+              className="group inline-flex items-center justify-center w-full sm:w-auto px-8 sm:px-12 py-4 sm:py-6 text-lg sm:text-xl font-semibold rounded-full border-2 border-purple-500/50 hover:border-purple-500 text-purple-700 dark:text-purple-300 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:bg-purple-50 dark:hover:bg-purple-950/30 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="group relative overflow-hidden bg-card/80 backdrop-blur-sm border-2 border-purple-500/30 hover:border-purple-500/60 text-foreground px-12 py-6 text-xl font-medium rounded-full transition-all duration-300 hover:scale-105 hover:bg-card min-w-[280px]"
-              >
-                <span className="relative z-10 flex items-center gap-4">
-                  <Mail className="h-6 w-6" />
-                  <span>Or Email Brief Instead</span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-orange-500/5 to-purple-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </Button>
+              <span className="flex items-center gap-3 sm:gap-4">
+                <Mail className="h-5 w-5 sm:h-6 sm:w-6" />
+                <span>Get Quote via Email</span>
+              </span>
             </a>
           </div>
 
