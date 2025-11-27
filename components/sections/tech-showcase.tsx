@@ -8,6 +8,11 @@ import {
   TailwindIcon, 
   TypeScriptIcon,
   NodeJsIcon,
+  SupabaseIcon,
+  PrismaIcon,
+  PythonIcon,
+  LLMIcon,
+  DatabaseIcon,
   FlutterIcon,
   GitIcon,
   FigmaIcon
@@ -18,10 +23,12 @@ const techStack = [
   { name: "React", icon: ReactIcon, category: "Frontend", color: "text-blue-500" },
   { name: "TypeScript", icon: TypeScriptIcon, category: "Frontend", color: "text-blue-600" },
   { name: "Tailwind", icon: TailwindIcon, category: "Frontend", color: "text-cyan-500" },
+  { name: "Supabase", icon: SupabaseIcon, category: "Backend", color: "text-green-600" },
+  { name: "PostgreSQL", icon: DatabaseIcon, category: "Database", color: "text-blue-700" },
+  { name: "Prisma", icon: PrismaIcon, category: "Database", color: "text-indigo-600" },
   { name: "Node.js", icon: NodeJsIcon, category: "Backend", color: "text-green-600" },
-  { name: "Flutter", icon: FlutterIcon, category: "Mobile", color: "text-blue-400" },
-  { name: "Git", icon: GitIcon, category: "Tools", color: "text-orange-600" },
-  { name: "Figma", icon: FigmaIcon, category: "Design", color: "text-purple-600" },
+  { name: "Python", icon: PythonIcon, category: "Backend", color: "text-yellow-600" },
+  { name: "LLMs", icon: LLMIcon, category: "AI", color: "text-purple-600" },
 ];
 
 export function TechShowcase() {
@@ -67,7 +74,7 @@ export function TechShowcase() {
             Tech I Work With
           </h2>
           <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Modern tools and technologies that power my projects
+            A modern, stable stack designed for speed, reliability, and scalability.
           </p>
         </motion.div>
 
@@ -143,10 +150,10 @@ export function TechShowcase() {
           className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-6 sm:grid-cols-4"
         >
           {[
-            { value: "8+", label: "Technologies" },
-            { value: "21", label: "Age" },
-            { value: "2024", label: "Started Agency" },
-            { value: "∞", label: "Learning Mode" },
+            { value: "8+", label: "completed builds" },
+            { value: "3+", label: "product ecosystems worked on" },
+            { value: "Multiple", label: "long-term client partnerships" },
+            { value: "Global", label: "ready engineering stack" },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

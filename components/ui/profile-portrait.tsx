@@ -26,7 +26,7 @@ const shapeVariants = {
 
 export function ProfilePortrait() {
   return (
-    <div className="relative h-80 w-80 sm:h-96 sm:w-96">
+    <div className="relative h-64 w-64 sm:h-80 sm:w-80 lg:h-96 lg:w-96">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 rounded-3xl bg-[linear-gradient(to_right,#1f1f1f_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f_1px,transparent_1px)] bg-[size:20px_20px] opacity-20" />
       

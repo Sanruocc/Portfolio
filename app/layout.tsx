@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Navigation } from '@/components/navigation';
 import { Footer } from '@/components/footer';
 import { GlobalProviders } from '@/components/global-providers';
+import { FloatingContact } from '@/components/ui/floating-contact';
 import './globals.css';
 
 const inter = Inter({
@@ -110,6 +111,7 @@ export default function RootLayout({
             <Navigation />
             <main id='main-content'>{children}</main>
             <Footer />
+            <FloatingContact />
           </GlobalProviders>
         </ThemeProvider>
       </body>

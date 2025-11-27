@@ -626,3 +626,83 @@ export const WebsiteIcon = ({ className }: { className?: string }) => (
     <circle cx='8' cy='5' r='0.5' fill='currentColor'/>
   </svg>
 );
+
+export const DatabaseIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='16'
+    height='16'
+    viewBox='0 0 16 16'
+    fill='none'
+    className={className}
+    aria-label='Database'
+  >
+    <ellipse cx='8' cy='4' rx='6' ry='2' stroke='currentColor' strokeWidth='1.5' fill='none'/>
+    <path d='M2 4v6c0 1.1 2.7 2 6 2s6-0.9 6-2V4' stroke='currentColor' strokeWidth='1.5' fill='none'/>
+    <ellipse cx='8' cy='10' rx='6' ry='2' stroke='currentColor' strokeWidth='1.5' fill='none'/>
+  </svg>
+);
+
+export const SupabaseIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='16'
+    height='16'
+    viewBox='0 0 16 16'
+    fill='none'
+    className={className}
+    aria-label='Supabase'
+  >
+    <rect x='3' y='3' width='10' height='10' rx='2' stroke='currentColor' strokeWidth='1.5' fill='none'/>
+    <path d='M8 5l3 3-3 3' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' strokeLinejoin='round'/>
+  </svg>
+);
+
+export const PrismaIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='16'
+    height='16'
+    viewBox='0 0 16 16'
+    fill='none'
+    className={className}
+    aria-label='Prisma'
+  >
+    <rect x='2' y='2' width='12' height='12' rx='2' stroke='currentColor' strokeWidth='1.5' fill='none'/>
+    <path d='M5 5h6v6H5z' stroke='currentColor' strokeWidth='1.5' fill='none'/>
+    <path d='M8 5v6' stroke='currentColor' strokeWidth='1'/>
+  </svg>
+);
+
+export const PythonIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='16'
+    height='16'
+    viewBox='0 0 16 16'
+    fill='none'
+    className={className}
+    aria-label='Python'
+  >
+    <circle cx='8' cy='8' r='6' stroke='currentColor' strokeWidth='1.5' fill='none'/>
+    <path d='M6 8c0-1 1-1 1-1s1 0 1 1-1 1-1 1-1 0-1-1z' stroke='currentColor' strokeWidth='1' fill='currentColor'/>
+    <path d='M10 8c0-1 1-1 1-1s1 0 1 1-1 1-1 1-1 0-1-1z' stroke='currentColor' strokeWidth='1' fill='currentColor'/>
+  </svg>
+);
+
+export const LLMIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width='16'
+    height='16'
+    viewBox='0 0 16 16'
+    fill='none'
+    className={className}
+    aria-label='LLM'
+  >
+    <rect x='3' y='4' width='10' height='8' rx='2' stroke='currentColor' strokeWidth='1.5' fill='none'/>
+    <path d='M6 7h4' stroke='currentColor' strokeWidth='1.5'/>
+    <path d='M6 9h3' stroke='currentColor' strokeWidth='1.5'/>
+    <circle cx='11' cy='8' r='1' fill='currentColor'/>
+  </svg>
+);

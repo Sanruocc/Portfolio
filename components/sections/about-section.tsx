@@ -8,12 +8,17 @@ import {
   TailwindIcon, 
   TypeScriptIcon,
   NodeJsIcon,
+  SupabaseIcon,
+  DatabaseIcon,
+  PrismaIcon,
+  PythonIcon,
+  LLMIcon,
+  GitIcon,
+  FigmaIcon,
   RestApiIcon,
   JsonIcon,
   FlutterIcon,
-  GitIcon,
   VSCodeIcon,
-  FigmaIcon,
   AiIcon,
   StrategyIcon,
   CommunicationIcon,
@@ -93,62 +98,77 @@ const techStack = [
   { name: 'Next.js', icon: NextJsIcon, category: 'Frontend' },
   { name: 'React', icon: ReactIcon, category: 'Frontend' },
   { name: 'TypeScript', icon: TypeScriptIcon, category: 'Frontend' },
-  { name: 'Tailwind CSS', icon: TailwindIcon, category: 'Frontend' },
+  { name: 'Tailwind', icon: TailwindIcon, category: 'Frontend' },
+  { name: 'Supabase', icon: SupabaseIcon, category: 'Backend' },
+  { name: 'PostgreSQL', icon: DatabaseIcon, category: 'Database' },
   { name: 'Node.js', icon: NodeJsIcon, category: 'Backend' },
-  { name: 'REST APIs', icon: RestApiIcon, category: 'Backend' },
-  { name: 'JSON', icon: JsonIcon, category: 'Backend' },
-  { name: 'Flutter', icon: FlutterIcon, category: 'Mobile' },
+  { name: 'Python', icon: PythonIcon, category: 'Backend' },
+  { name: 'LLM Tools', icon: LLMIcon, category: 'AI' },
+  { name: 'UI/UX Design', icon: FigmaIcon, category: 'Design' },
   { name: 'Git', icon: GitIcon, category: 'Tools' },
-  { name: 'VS Code', icon: VSCodeIcon, category: 'Tools' },
-  { name: 'Figma', icon: FigmaIcon, category: 'Tools' },
-  { name: 'AI Tools', icon: AiIcon, category: 'AI' },
+  { name: 'AI Automations', icon: AiIcon, category: 'AI' },
 ];
 
 const currentFocus = [
   {
-    icon: '🎨',
-    title: 'Web Agency',
-    description: 'Pune & Mumbai service businesses',
-  },
-  {
     icon: '🤖',
-    title: 'AI Tools',
-    description: 'Automation products for scalability',
+    title: 'AI Employee Framework',
+    description: 'Modular framework for AI assistants that help founders',
   },
   {
-    icon: '📦',
-    title: 'Templates',
-    description: 'Ready-to-use premium website kits',
+    icon: '🎨',
+    title: 'SaaS UI Components',
+    description: 'Reusable library of premium interface components',
+  },
+  {
+    icon: '🎤',
+    title: 'Voice AI Companion',
+    description: 'Personal AI system with voice interaction',
+  },
+  {
+    icon: '⚡',
+    title: 'Dev Automation Tools',
+    description: 'Internal tools to speed up development workflow',
   },
 ];
 
 const quickFacts = [
-  { value: '21', label: 'Age & Energy' },
-  { value: 'Pune', label: 'Base City (born in Surat)' },
-  { value: '2024', label: 'Started Agency Journey' },
-  { value: '∞', label: 'Learning Mode' },
+  { value: '2024', label: 'Active Development' },
+  { value: 'AI+Web', label: 'Specialization' },
+  { value: 'Premium', label: 'Quality Focus' },
+  { value: 'Full-Stack', label: 'Technical Range' },
 ];
 
 const approachPoints = [
   {
     icon: StrategyIcon,
-    title: 'Strategic thinking',
-    description: 'Not just coding',
+    title: 'Build with clarity and purpose',
+    description: 'Every line of code serves a specific goal',
   },
   {
     icon: CommunicationIcon,
-    title: 'Clear communication',
-    description: 'Systems over endless calls',
+    title: 'Keep communication simple and honest',
+    description: 'Clear communication beats complex explanations',
   },
   {
     icon: QualityIcon,
-    title: 'Premium quality',
-    description: "Charge what you're worth",
+    title: 'Focus on conversion and user experience',
+    description: 'Beautiful interfaces that actually work',
   },
   {
     icon: ResultsIcon,
-    title: 'Results-focused',
-    description: 'Business outcomes > tech hype',
+    title: 'Avoid unnecessary complexity',
+    description: 'Simple solutions to complex problems',
+  },
+  {
+    icon: AiIcon,
+    title: 'Deliver polished, premium-quality interfaces',
+    description: 'Attention to detail in every interaction',
+  },
+  {
+    icon: FigmaIcon,
+    title: 'Align the product with actual business goals',
+    description: 'Technology should solve real business problems',
   },
 ];
 
@@ -171,15 +191,15 @@ export function AboutSection() {
       <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-purple-500/20 blur-[100px] dark:bg-purple-900/20" />
       <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-orange-500/20 blur-[100px] dark:bg-orange-900/20" />
 
-      <div className="container relative z-10 mx-auto max-w-6xl">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="container relative z-10 mx-auto max-w-7xl">
+        <div className="grid gap-12 lg:grid-cols-[auto,1fr] lg:gap-16 xl:gap-20 items-start">
           
           {/* Left Column - Visual */}
           <motion.div
             variants={sectionVariants}
-            className="flex items-center justify-center lg:justify-start"
+            className="flex items-start justify-center lg:justify-start"
           >
-            <div className="group relative">
+            <div className="group relative mt-8 lg:mt-12">
               <ProfilePortrait />
             </div>
           </motion.div>
@@ -202,18 +222,15 @@ export function AboutSection() {
               </h2>
               
               <p className="mb-6 text-base font-medium text-muted-foreground sm:text-lg">
-                Full-Stack Developer | AI Automation Builder | 21 | Pune, India
+                Full-Stack Developer | AI Automation Builder | Premium Digital Experiences
               </p>
               
               <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
                 <p>
-                  I&apos;m a freelance developer building premium web experiences for service businesses across India — from Pune to Mumbai and beyond. I specialize in creating SaaS-style websites that don&apos;t just look good, but actually convert visitors into customers.
+                  I&apos;m a full-stack developer and AI automation builder focused on creating premium digital experiences. My work combines clean front-end design, strong technical foundations, and a clear understanding of how users interact with products.
                 </p>
                 <p>
-                  Born in Surat, based in Pune, I&apos;m growing a web design agency focused on helping doctors, dentists, and professional service providers stand out online. My approach combines clean design, strategic thinking, and modern tech to build websites that work as hard as you do.
-                </p>
-                <p>
-                  Beyond client work, I&apos;m building AI-powered tools and digital products to help businesses automate workflows and scale without burning out. Long-term vision: build a semi-automated company where AI handles the repetitive stuff, so I can focus on strategy and creative problem-solving.
+                  I like keeping things simple: purposeful UX, fast load times, and interfaces that feel smooth and intentional. Whether it&apos;s a SaaS landing, a dashboard, or a fully custom automation tool, I aim to build products that feel modern and quietly powerful.
                 </p>
               </div>
             </motion.div>
@@ -253,7 +270,7 @@ export function AboutSection() {
                 What I&apos;m Building Now
               </h3>
               
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {currentFocus.map((item, index) => (
                   <motion.div
                     key={item.title}
@@ -272,7 +289,7 @@ export function AboutSection() {
             {/* Section 4: Quick Facts */}
             <motion.div variants={sectionVariants}>
               <h3 className="mb-6 font-heading text-2xl font-bold text-foreground sm:text-3xl">
-                Quick Facts
+                Current Focus
               </h3>
               
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">

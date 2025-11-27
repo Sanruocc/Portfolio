@@ -75,7 +75,7 @@ export function ContactSection() {
       </div>
 
       <div className="container relative z-10 mx-auto max-w-6xl">
-        <ContactForm />
+        <ContactForm onSuccess={() => {}} />
       </div>
     </motion.section>
   );

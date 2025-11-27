@@ -44,8 +44,8 @@ export const personSchema = {
   url: 'https://rajeshshrirao.com',
   image: 'https://rajeshshrirao.com/og-image.jpg',
   jobTitle: 'Full-Stack Developer & Web Designer',
-  email: 'contact@rajeshshrirao.com',
-  telephone: '+91-xxxxxxxxxx',
+  email: 'rajeshshrirao696@gmail.com',
+  telephone: '+91-9822379976',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Pune',
@@ -91,9 +91,9 @@ export const organizationSchema = {
   ],
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+91-xxxxxxxxxx',
+    telephone: '+91-9822379976',
     contactType: 'customer service',
-    email: 'contact@rajeshshrirao.com',
+    email: 'rajeshshrirao696@gmail.com',
     availableLanguage: ['English', 'Hindi', 'Marathi']
   },
   address: {
@@ -208,8 +208,8 @@ export const localBusinessSchema = {
   name: 'Rajesh Shrirao - Web Development Services',
   description: 'Full-Stack Developer & Web Designer in Pune, India',
   url: 'https://rajeshshrirao.com',
-  telephone: '+91-xxxxxxxxxx',
-  email: 'contact@rajeshshrirao.com',
+  telephone: '+91-9822379976',
+  email: 'rajeshshrirao696@gmail.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Pune',

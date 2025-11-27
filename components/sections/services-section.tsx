@@ -230,7 +230,7 @@ export function ServicesSection() {
             variants={cardVariants}
             className="text-lg leading-relaxed text-muted-foreground sm:text-xl"
           >
-            Premium web experiences designed to convert visitors into paying customers
+            Specialized solutions that drive business growth and streamline operations
           </motion.p>
         </motion.div>
 
@@ -246,8 +246,8 @@ export function ServicesSection() {
           <ServiceCard
             icon={<BrowserSparkleIcon className="h-16 w-16" />}
             title="SaaS-Style Marketing Websites"
-            description="High-end landing pages and websites for service businesses. Designed to look expensive, convert well, and load fast."
-            keyPoints={["Premium design", "Mobile-optimized", "SEO-ready"]}
+            description="Polished, high-trust websites that feel like real digital products, not templates."
+            keyPoints={["Premium design", "High-converting", "Fast-loading"]}
             accentColor="#A855F7"
             gradientStart="#A855F7"
             gradientEnd="#C084FC"
@@ -260,12 +260,12 @@ export function ServicesSection() {
             }
           />
 
-          {/* AI Automation & Tools */}
+          {/* AI Automations & Tools */}
           <ServiceCard
             icon={<RobotAutomationIcon className="h-16 w-16" />}
-            title="AI Automation & Tools"
-            description="Custom AI-powered tools and automation systems that reduce manual work and scale your operations."
-            keyPoints={["Workflow automation", "AI integration", "Time-saving systems"]}
+            title="AI Automations & Tools"
+            description="Custom LLM-powered systems that reduce manual work and simplify workflows."
+            keyPoints={["LLM integration", "Workflow automation", "Manual work reduction"]}
             accentColor="#FB923C"
             gradientStart="#FB923C"
             gradientEnd="#F97316"
@@ -278,12 +278,12 @@ export function ServicesSection() {
             }
           />
 
-          {/* Templates & Digital Products */}
+          {/* Conversion-Driven Lead Funnels */}
           <ServiceCard
-            icon={<LayersTemplateIcon className="h-16 w-16" />}
-            title="Templates & Digital Products"
-            description="Ready-to-use website templates and digital products for businesses that want to launch fast without compromising quality."
-            keyPoints={["Quick deployment", "Customizable", "Professional quality"]}
+            icon={<BrowserSparkleIcon className="h-16 w-16" />}
+            title="Conversion-Driven Lead Funnels"
+            description="Landing pages and funnels crafted to turn attention into actual leads."
+            keyPoints={["Lead generation", "Conversion optimization", "Sales-focused"]}
             accentColor="#3B82F6"
             gradientStart="#3B82F6"
             gradientEnd="#60A5FA"

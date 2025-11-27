@@ -353,3 +353,25 @@ html {
     display: none !important;
   }
 }
+
+/* Floating contact button positioning */
+.floating-contact-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+}
+
+/* Mobile safe area support */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .floating-contact-container {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Prevent button from overlapping with mobile nav bars */
+@media (max-width: 640px) {
+  .floating-contact-container {
+    bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  }
+}

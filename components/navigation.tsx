@@ -125,7 +125,7 @@ export function Navigation() {
           {/* CTA Button */}
           <div className='hidden md:flex items-center'>
             <a
-              href='https://wa.me/919890000000?text=Hi%20Rajesh,%20I%27m%20interested%20in%20working%20with%20you'
+              href='https://wa.me/919822379976?text=Hi%20Rajesh,%20I%27m%20interested%20in%20working%20with%20you'
               target='_blank'
               rel='noopener noreferrer'
               className='group flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-foreground border border-white/15 rounded-full bg-white/2 hover:bg-accent hover:border-accent hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background'
@@ -232,7 +232,7 @@ export function Navigation() {
                   className='mt-auto pt-8'
                 >
                   <a
-                    href='https://wa.me/919890000000?text=Hi%20Rajesh,%20I%27m%20interested%20in%20working%20with%20you'
+                    href='https://wa.me/919822379976?text=Hi%20Rajesh,%20I%27m%20interested%20in%20working%20with%20you'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='flex items-center justify-center gap-3 w-full bg-gradient-to-r from-accent to-accent/80 text-white font-medium py-4 px-6 rounded-xl hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-background'
