@@ -85,7 +85,7 @@ export function HeroSection() {
                 className="group relative overflow-hidden bg-gradient-to-r from-purple-600 via-orange-500 to-purple-600 bg-[length:200%_auto] hover:animate-gradient-shift text-white px-8 py-4 text-lg font-semibold rounded-full shadow-2xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105 border-0"
               >
                 <span className="relative z-10 flex items-center gap-3">
-                  <span>Let's Build Together</span>
+                  <span>Let&apos;s Build Together</span>
                   <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-700 via-orange-600 to-purple-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

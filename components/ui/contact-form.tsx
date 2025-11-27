@@ -56,10 +56,10 @@ export function ContactForm({ onSuccess }: ContactSectionProps) {
       {/* Header */}
       <motion.div variants={itemVariants} className="text-center mb-16">
         <h2 className="mb-4 font-heading text-4xl lg:text-5xl font-bold text-foreground">
-          Let's Work Together
+          Let&apos;s Work Together
         </h2>
         <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto">
-          Ready to build something amazing? Get in touch and let's discuss your project.
+          Ready to build something amazing? Get in touch and let&apos;s discuss your project.
         </p>
       </motion.div>
 

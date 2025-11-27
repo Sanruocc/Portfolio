@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const shapeVariants = {
   hidden: { opacity: 0, scale: 0.8, rotate: -10 },
@@ -62,10 +63,12 @@ export function ProfilePortrait() {
           boxShadow: '0 8px 32px rgba(168, 85, 247, 0.3)',
         }}
       >
-        <img
+        <Image
           src="/Gemini_Generated_Image_7y4i697y4i697y4i.png"
           alt="Rajesh Shrirao - Full-Stack Developer"
-          className="h-full w-full object-cover"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 16rem, (max-width: 1024px) 20rem, 24rem"
         />
       </motion.div>
 
