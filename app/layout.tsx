@@ -103,19 +103,14 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <head>
         {/* Google tag (gtag.js) */}
-        <Script
-          async
-          src='https://www.googletagmanager.com/gtag/js?id=AW-17705589248'
-          strategy='afterInteractive'
-        />
-        <Script id='google-analytics' strategy='afterInteractive'>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17705589248');
-          `}
-        </Script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17705589248"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'AW-17705589248');
+        </script>
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans bg-background text-foreground antialiased`}>
         <ThemeProvider
